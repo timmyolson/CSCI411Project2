@@ -4,7 +4,7 @@ CREATE TABLE Person (
   email varchar2(255) default NULL,
   PRIMARY KEY (pid)
 );
-
+ 
 CREATE TABLE Author (
   pid number NOT NULL references person(pid),
   PRIMARY KEY (pid)
