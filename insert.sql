@@ -163,16 +163,16 @@ INSERT INTO Subscription (sid,slen,begin_date,fee) VALUES ('QWE93IZB7XI',8,'31-A
 INSERT INTO Subscription (sid,slen,begin_date,fee) VALUES ('ALC68UVE0WM',12,'27-Oct-27','$700');
 
 -- User
-INSERT INTO User (uid,uname) VALUES ('u1000','Leonard Mckenzie');
-INSERT INTO User (uid,uname) VALUES ('u1050','Ora Pacheco');
-INSERT INTO User (uid,uname) VALUES ('u1100','Nasim Mercer');
-INSERT INTO User (uid,uname) VALUES ('u1150','Thor Branch');
-INSERT INTO User (uid,uname) VALUES ('u1200','Mollie Schwartz');
-INSERT INTO User (uid,uname) VALUES ('u1250','Rebecca Conrad');
-INSERT INTO User (uid,uname) VALUES ('u1300','Eliana Decker');
-INSERT INTO User (uid,uname) VALUES ('u1350','Griffin West');
-INSERT INTO User (uid,uname) VALUES ('u1400','Jordan Villarreal');
-INSERT INTO User (uid,uname) VALUES ('u1450','Penelope Copeland');
+INSERT INTO Users (user_id,uname) VALUES ('u1000','Leonard Mckenzie');
+INSERT INTO Users (user_id,uname) VALUES ('u1050','Ora Pacheco');
+INSERT INTO Users (user_id,uname) VALUES ('u1100','Nasim Mercer');
+INSERT INTO Users (user_id,uname) VALUES ('u1150','Thor Branch');
+INSERT INTO Users (user_id,uname) VALUES ('u1200','Mollie Schwartz');
+INSERT INTO Users (user_id,uname) VALUES ('u1250','Rebecca Conrad');
+INSERT INTO Users (user_id,uname) VALUES ('u1300','Eliana Decker');
+INSERT INTO Users (user_id,uname) VALUES ('u1350','Griffin West');
+INSERT INTO Users (user_id,uname) VALUES ('u1400','Jordan Villarreal');
+INSERT INTO Users (user_id,uname) VALUES ('u1450','Penelope Copeland');
 
 -- Viewer
 INSERT INTO Viewer (vid) VALUES (1000);
@@ -477,13 +477,13 @@ INSERT INTO Lives_at (pid,street,city,state) VALUES (152,'P.O. Box 232, 5659 Sed
 INSERT INTO Lives_at (pid,street,city,state) VALUES (153,'703-9416 Semper St.','Borno','Michigan');
 
 -- Creates
-INSERT INTO Creates (vid,uid,sid) VALUES (1000,'u1000','HTC81ARU6VV',);
-INSERT INTO Creates (vid,uid,sid) VALUES (1050,'u1050','JZK68EZI9CN',);
-INSERT INTO Creates (vid,uid,sid) VALUES (1100,'u1100','LAY62ERU4CX',);
-INSERT INTO Creates (vid,uid,sid) VALUES (1150,'u1150','MRN33QSD9ZS',);
-INSERT INTO Creates (vid,uid,sid) VALUES (1200,'u1200','AYG49JID9QS',);
-INSERT INTO Creates (vid,uid,sid) VALUES (1250,'u1250','ULB07XAU1AJ',);
-INSERT INTO Creates (vid,uid,sid) VALUES (1300,'u1300','DGK38CIH5HH',);
-INSERT INTO Creates (vid,uid,sid) VALUES (1350,'u1350','NNP32LKF4VK',);
-INSERT INTO Creates (vid,uid,sid) VALUES (1400,'u1400','QWE93IZB7XI',);
-INSERT INTO Creates (vid,uid,sid) VALUES (1450,'u1450','ALC68UVE0WM',);
+INSERT INTO Creates (vid,user_id,sid) VALUES (1000,'u1000','HTC81ARU6VV',);
+INSERT INTO Creates (vid,user_id,sid) VALUES (1050,'u1050','JZK68EZI9CN',);
+INSERT INTO Creates (vid,user_id,sid) VALUES (1100,'u1100','LAY62ERU4CX',);
+INSERT INTO Creates (vid,user_id,sid) VALUES (1150,'u1150','MRN33QSD9ZS',);
+INSERT INTO Creates (vid,user_id,sid) VALUES (1200,'u1200','AYG49JID9QS',);
+INSERT INTO Creates (vid,user_id,sid) VALUES (1250,'u1250','ULB07XAU1AJ',);
+INSERT INTO Creates (vid,user_id,sid) VALUES (1300,'u1300','DGK38CIH5HH',);
+INSERT INTO Creates (vid,user_id,sid) VALUES (1350,'u1350','NNP32LKF4VK',);
+INSERT INTO Creates (vid,user_id,sid) VALUES (1400,'u1400','QWE93IZB7XI',);
+INSERT INTO Creates (vid,user_id,sid) VALUES (1450,'u1450','ALC68UVE0WM',);
