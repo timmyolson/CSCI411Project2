@@ -6,7 +6,7 @@ INSERT INTO Editor (pid) VALUES (112);
 INSERT INTO Publishing_Company (pcid,pcname,phone) VALUES (33333,'Publisher Name','(888) 888-8888');
 INSERT INTO Address (street,city,state) VALUES ('street','city','state');
 INSERT INTO Subscription (sid,slen,begin_date,fee) VALUES ('HTC81ARU6VV',12,'19-Nov-19','$700');
-INSERT INTO User (uid,uname) VALUES ('u1000','Leonard Mckenzie');
+INSERT INTO Users (user_id,uname) VALUES ('u1000','Leonard Mckenzie');
 INSERT INTO Viewer (vid) VALUES (1000);
 
 INSERT INTO Catalog_item (catid,contract_term) VALUES ('IXUU3646','1-Jan-00');
@@ -38,5 +38,5 @@ INSERT INTO Reference (catid,ref_id) VALUES ('IXUU3646','ZLYG9928');
 INSERT INTO Located_at (pcid,street,city,state) VALUES (33333,'street','city','state');
 INSERT INTO Lives_at (pid,street,city,state) VALUES (111,'street','city','state');
 INSERT INTO Lives_at (pid,street,city,state) VALUES (112,'street','city','state');
-INSERT INTO Creates (vid,uid,sid) VALUES (1000,'u1000','HTC81ARU6VV',);
+INSERT INTO Creates (vid,user_id,sid) VALUES (1000,'u1000','HTC81ARU6VV',);
 
