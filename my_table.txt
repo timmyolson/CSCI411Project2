@@ -1,0 +1,109 @@
+CREATE TABLE Person (
+PrsnID number(2),
+FirstName varchar2(24),
+LastName varchar2(24),
+PRIMARY KEY (PrsnID)
+);
+
+CREATE TABLE Users (
+UserID number(2),
+Username varchar2(16) NOT NULL UNIQUE,
+Password varchar2(16) NOT NULL,
+AccessLvl number(1) NOT NULL,
+PRIMARY KEY (UserID),
+FOREIGN KEY (UserID) REFERENCES Person(PrsnID),
+CHECK (AccessLvl IN (1,0)) -- 1 = full access, 0 = author only access
+);
+CREATE TABLE Address (
+AddrID number(2),
+Addr varchar2(8) NOT NULL,
+Street varchar2(16) NOT NULL,
+City varchar2(16) NOT NULL,
+State char(2) NOT NULL,
+Zip number(5) NOT NULL,
+PRIMARY KEY (AddrID)
+);
+
+CREATE TABLE Author (
+AuthID number(2),
+AddrID number(2) NOT NULL,
+Email varchar2(32) NOT NULL,
+PRIMARY KEY (AuthID),
+FOREIGN KEY (AuthID) REFERENCES Person(PrsnID)
+);
+
+CREATE TABLE Publisher (
+PubID number(2),
+AddrID number(2) NOT NULL,
+Name varchar2(16) NOT NULL,
+PRIMARY KEY (PubID),
+FOREIGN KEY (AddrID) REFERENCES Address(AddrID)
+);
+
+CREATE TABLE ArticleType (
+TypeID number(2),
+Name varchar2(24) NOT NULL,
+PRIMARY KEY (TypeID)
+);
+
+
+CREATE TABLE Article (
+ArtID number(2),
+TypeID number(2) NOT NULL,
+PubID number(2) NOT NULL,
+Title varchar2(16) NOT NULL,
+Content varchar2(40) NOT NULL,
+Published date NOT NULL,
+PRIMARY KEY (ArtID),
+FOREIGN KEY (TypeID) REFERENCES ArticleType(TypeID),
+FOREIGN KEY (PubID) REFERENCES Publisher(PubID)
+);
+
+CREATE TABLE Wrote (
+AuthID number(2),
+ArtID number(2),
+PRIMARY KEY (AuthID, ArtID),
+FOREIGN KEY (AuthID) REFERENCES Author(AuthID),
+FOREIGN KEY (ArtID) REFERENCES Article(ArtID)
+);
+
+CREATE TABLE Sources (
+ArtID number(2),
+RefID number(2),
+PageStart number(4) NOT NULL,
+PageEnd number(4) NOT NULL,
+Accessed date NOT NULL,
+PRIMARY KEY (ArtID, RefID),
+FOREIGN KEY (ArtID) REFERENCES Article(ArtID),
+FOREIGN KEY (RefID) REFERENCES Article(ArtID)
+);
+
+CREATE TABLE Validation (
+ValidID number(2),
+UserID number(2),
+ValidBegin date NOT NULL,
+ValidEnd date,
+PRIMARY KEY (ValidID),
+4
+FOREIGN KEY (UserID) REFERENCES Users(UserID) ON DELETE SET NULL
+);
+
+
+CREATE TABLE UserView (
+UserID number(2),
+ArtID number(2),
+Accessed date,
+Fee number(5,2) NOT NULL,
+PRIMARY KEY (UserID, ArtID, Accessed),
+FOREIGN KEY (UserID) REFERENCES Users(UserID),
+FOREIGN KEY (ArtID) REFERENCES Article(ArtID)
+);
+
+CREATE TABLE ValidView (
+ValidID number(2),
+ArtID number(2),
+Accessed date,
+PRIMARY KEY (ValidID, ArtID, Accessed),
+FOREIGN KEY (ValidID) REFERENCES Validation(ValidID),
+FOREIGN KEY (ArtID) REFERENCES Article(ArtID)
+);

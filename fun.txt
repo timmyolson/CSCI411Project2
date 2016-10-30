@@ -1,0 +1,48 @@
+--delete person by id if they are not author 
+CREATE OR REPLACE TRIGGER PropagateUserDelete
+    AFTER DELETE
+    ON Users
+    FOR EACH ROW
+DECLARE
+    Refs number;
+BEGIN
+    -- Check if  author.
+    SELECT count(*) INTO Refs
+        FROM Person P, Author A
+        WHERE P.PrsnID = A.AuthID
+        AND P.PrsnID = :OLD.UserID;
+
+    -- Delete the person if he is not author
+    IF Refs = 0 THEN
+        DELETE FROM Person P
+            WHERE P.PrsnID = :OLD.UserID;
+    END IF;
+END;
+
+--dispay the article writeen by user 
+CREATE OR REPLACE PROCEDURE AuthorPublishes(
+    First_Name IN Person.FirstName%TYPE,
+    Last_Name  IN Person.LastName%TYPE)
+IS
+    CURSOR ArticleCur(
+        F_Name Person.FirstName%TYPE,
+        L_Name  Person.LastName%TYPE)
+    IS
+        SELECT Art.*
+            FROM Person P, Author Auth, Article Art, Wrote W
+            WHERE P.PrsnID = Auth.AuthID
+            AND Auth.AuthID = W.AuthID
+            AND Art.ArtID = W.ArtID
+            AND P.FirstName LIKE '%' || F_Name || '%'
+            AND P.LastName LIKE '%' || L_Name || '%';
+    ArticleRec Article%ROWTYPE;
+BEGIN
+    FOR ArticleRec IN ArticleCur(First_Name, Last_Name)
+    LOOP
+							 --articleid						--article title
+        dbms_output.put_line(ArticleRec.ArtID || chr(10) || ArticleRec.Title);
+    END LOOP;
+
+END AuthorPublishes;
+
+
