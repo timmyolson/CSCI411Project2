@@ -69,7 +69,7 @@ INSERT INTO Editor (pid) VALUES (135);
 --Publishing Company
 INSERT INTO Publishing_Company (pcid,pcname,phone) VALUES (37270,'African Zoology','(923) 220-2258');
 INSERT INTO Publishing_Company (pcid,pcname,phone) VALUES (45671,'Pacific Historical Review','(303) 730-6120');
-INSERT INTO Publishing_Company (pcid,pcname,phone) VALUES (27542,'Energy & Environment','(375) 226-9301');
+INSERT INTO Publishing_Company (pcid,pcname,phone) VALUES (27542,'Energy and Environment','(375) 226-9301');
 INSERT INTO Publishing_Company (pcid,pcname,phone) VALUES (87623,'Ancient Philosophy','(801) 498-2467');
 INSERT INTO Publishing_Company (pcid,pcname,phone) VALUES (12076,'Journal of Herpetology','(672) 912-7717');
 INSERT INTO Publishing_Company (pcid,pcname,phone) VALUES (31677,'International Journal of Engineering Science','(376) 472-0107');
@@ -79,7 +79,7 @@ INSERT INTO Publishing_Company (pcid,pcname,phone) VALUES (77523,'Foreign Policy
 INSERT INTO Publishing_Company (pcid,pcname,phone) VALUES (73864,'Bon Appétit','(816) 349-2982');
 INSERT INTO Publishing_Company (pcid,pcname,phone) VALUES (02585,'Forbes','(978) 865-6009');
 INSERT INTO Publishing_Company (pcid,pcname,phone) VALUES (79566,'The Family Handyman','(773) 303-7520');
-INSERT INTO Publishing_Company (pcid,pcname,phone) VALUES (20527,'Harper & Brothers','(220) 649-5445');
+INSERT INTO Publishing_Company (pcid,pcname,phone) VALUES (20527,'Harper and Brothers','(220) 649-5445');
 INSERT INTO Publishing_Company (pcid,pcname,phone) VALUES (75892,'Nanhai','(533) 772-6290');
 INSERT INTO Publishing_Company (pcid,pcname,phone) VALUES (85680,'Secker and Warburg','(573) 264-7543');
 INSERT INTO Publishing_Company (pcid,pcname,phone) VALUES (00451,'Thomas Cautley Newby','(269) 196-7609');
@@ -237,45 +237,45 @@ INSERT INTO Catalog_item (catid,contract_term) VALUES ('YQHH6457','21-Dec-30');
 INSERT INTO Catalog_item (catid,contract_term) VALUES ('NPPH3852','27-Jan-33');
 
 -- Journal
-INSERT INTO Journal (jid,jtitle,jvol,content) VALUES ('YZAQ6317','Potential of Native Organic Feeding Stuffs in Poultry Production',28);
-INSERT INTO Journal (jid,jtitle,jvol,content) VALUES ('ABIQ2755','Water the Epic Struggle for Wealth, Power, and Civilization',79);
-INSERT INTO Journal (jid,jtitle,jvol,content) VALUES ('OVKQ3250','Nebraskas Twin Cities',30);
-INSERT INTO Journal (jid,jtitle,jvol,content) VALUES ('ZNMF0012','The Role of Time and Time Perspective',19);
-INSERT INTO Journal (jid,jtitle,jvol,content) VALUES ('NSYD3340','Serum Biochemistry of Lumpy Skin Disease Virus-Infected Cattle',55);
-INSERT INTO Journal (jid,jtitle,jvol,content) VALUES ('HCEE1463','Low-power Depth-based Descending Stair Detection for Smart Assistive Devices',75);
-INSERT INTO Journal (jid,jtitle,jvol,content) VALUES ('TSOW8238','LISP: A Southbound SDN Protocol?',5);
-INSERT INTO Journal (jid,jtitle,jvol,content) VALUES ('ERRZ8161','Remarque en toy telle marque',73);
-INSERT INTO Journal (jid,jtitle,jvol,content) VALUES ('NPPH3852','Dynamic Assessment of Exposure to Air Pollution Using Mobile Phone Data',52);
+INSERT INTO Journal (jid,jtitle,jvol,content,catid) VALUES ('YZAQ6317','Potential of Native Organic Feeding Stuffs in Poultry Production',28,'the content of journal: Potential of Native...','IXUU3646');
+INSERT INTO Journal (jid,jtitle,jvol,content,catid) VALUES ('ABIQ2755','Water the Epic Struggle for Wealth, Power, and Civilization',79,'the content of journal: Water the Epic...','KQZJ4175');
+INSERT INTO Journal (jid,jtitle,jvol,content,catid) VALUES ('OVKQ3250','Nebraskas Twin Cities',30,'the content of journal: Nebraskas Twin Cities','ZLYG9928');
+INSERT INTO Journal (jid,jtitle,jvol,content,catid) VALUES ('ZNMF0012','The Role of Time and Time Perspective',19,'the content of journal: The Role of Time...','VXWY8161');
+INSERT INTO Journal (jid,jtitle,jvol,content,catid) VALUES ('NSYD3340','Serum Biochemistry of Lumpy Skin Disease Virus-Infected Cattle',55,'the content of journal: Serum Biochemistry of Lumpy...','UENO6668');
+INSERT INTO Journal (jid,jtitle,jvol,content,catid) VALUES ('HCEE1463','Low-power Depth-based Descending Stair Detection for Smart Assistive Devices',75,'the content of journal: Low-power Depth-based...','IBNV2946');
+INSERT INTO Journal (jid,jtitle,jvol,content,catid) VALUES ('TSOW8238','LISP: A Southbound SDN Protocol?',5,'the content of journal: LISP: A Southbound SDN Protocol?','BKGN1857');
+INSERT INTO Journal (jid,jtitle,jvol,content,catid) VALUES ('ERRZ8161','Remarque en toy telle marque',73,'the content of journal: Remarque en toy telle marque','NJEQ6977');
+INSERT INTO Journal (jid,jtitle,jvol,content,catid) VALUES ('NPPH3852','Dynamic Assessment of Exposure to Air Pollution Using Mobile Phone Data',52,'the content of journal: Dynamic Assessment of Exposure...','LHHD8542');
 
 -- Magazine
-INSERT INTO Magazine (mid,mtitle,jvol,content) VALUES ('ZLYG9928','10 Studies to Help Shape Your Health',73);
-INSERT INTO Magazine (mid,mtitle,jvol,content) VALUES ('UENO6668','Neurodegeneration: Cold shock protects the brain',99);
-INSERT INTO Magazine (mid,mtitle,jvol,content) VALUES ('RYMF2195','Canadas History Society Annual Report 2015',62);
-INSERT INTO Magazine (mid,mtitle,jvol,content) VALUES ('RHBY3015','Off-Grid Food Preservation',15);
-INSERT INTO Magazine (mid,mtitle,jvol,content) VALUES ('ESCF0068','Foods You Should (and Can) Produce Yourself and Why',38);
-INSERT INTO Magazine (mid,mtitle,jvol,content) VALUES ('HPNL1208','How is Bitcoin money',68);
-INSERT INTO Magazine (mid,mtitle,jvol,content) VALUES ('YQHH6457','Can you change how you feel about money?',71);
+INSERT INTO Magazine (mid,mtitle,jvol,content,catid) VALUES ('ZLYG9928','10 Studies to Help Shape Your Health',73,'The content of magazine: 10 Studies to Help...','IXNJ8371');
+INSERT INTO Magazine (mid,mtitle,jvol,content,catid) VALUES ('UENO6668','Neurodegeneration: Cold shock protects the brain',99,'The content of magazine: Neurodegeneration...','YZAQ6317');
+INSERT INTO Magazine (mid,mtitle,jvol,content,catid) VALUES ('RYMF2195','Canadas History Society Annual Report 2015',62,'The content of magazine: Canadas History 2015...','CEVT7059');
+INSERT INTO Magazine (mid,mtitle,jvol,content,catid) VALUES ('RHBY3015','Off-Grid Food Preservation',15,'The content of magazine: Off-Grid Food Preservation','ABIQ2755');
+INSERT INTO Magazine (mid,mtitle,jvol,content,catid) VALUES ('ESCF0068','Foods You Should (and Can) Produce Yourself and Why',38,'The content of magazine: Foods You Should Produce Yourself...','RYMF2195');
+INSERT INTO Magazine (mid,mtitle,jvol,content,catid) VALUES ('HPNL1208','How is Bitcoin money',68,'The content of magazine: How is Bitcoin money','QEDL4413');
+INSERT INTO Magazine (mid,mtitle,jvol,content,catid) VALUES ('YQHH6457','Can you change how you feel about money?',71,'The content of magazine: Can you change how you feel about money?','OVKQ3250');
 
 -- Book
-INSERT INTO Book (bid,btitle,edition,content) VALUES ('IXUU3646','Moby-Dick',1); Herman Melville
-INSERT INTO Book (bid,btitle,edition,content) VALUES ('IBNV2946','The Old Lady Who Swallowed a Fly',3);
-INSERT INTO Book (bid,btitle,edition,content) VALUES ('LHHD8542','Animal Farm',1);
-INSERT INTO Book (bid,btitle,edition,content) VALUES ('NJEQ6977','Wuthering Heights',1);
-INSERT INTO Book (bid,btitle,edition,content) VALUES ('CEVT7059','Mrs Dalloway',2);
-INSERT INTO Book (bid,btitle,edition,content) VALUES ('VMGS7843','The Bell Jar',2);
-INSERT INTO Book (bid,btitle,edition,content) VALUES ('QEDL4413','A Confederacy of Dunces',8);
-INSERT INTO Book (bid,btitle,edition,content) VALUES ('HZLE2432','The Trial',1);
-INSERT INTO Book (bid,btitle,edition,content) VALUES ('LQVR8230','Finnegans Wake',4);
-INSERT INTO Book (bid,btitle,edition,content) VALUES ('VOTV6503','Sons and Lovers',1);
-INSERT INTO Book (bid,btitle,edition,content) VALUES ('VDNT9283','Gravitys Rainbow',3);
-INSERT INTO Book (bid,btitle,edition,content) VALUES ('SQXZ1306','The Old Man and the Sea',3);
+INSERT INTO Book (bid,btitle,edition,content,catid) VALUES ('IXUU3646','Moby-Dick',1,'The content of book: Moby-Dick','VMGS7843');
+INSERT INTO Book (bid,btitle,edition,content,catid) VALUES ('IBNV2946','The Old Lady Who Swallowed a Fly',3,'The content of book: The Old Lady...','HZLE2432');
+INSERT INTO Book (bid,btitle,edition,content,catid) VALUES ('LHHD8542','Animal Farm',1,'The content of book: Animal Farm','ITCL7144');
+INSERT INTO Book (bid,btitle,edition,content,catid) VALUES ('NJEQ6977','Wuthering Heights',1,'The content of book: Wuthering Heights','ZNMF0012');
+INSERT INTO Book (bid,btitle,edition,content,catid) VALUES ('CEVT7059','Mrs Dalloway',2,'The content of book: Mrs Dalloway','RHBY3015');
+INSERT INTO Book (bid,btitle,edition,content,catid) VALUES ('VMGS7843','The Bell Jar',2,'The content of book: The Bell Jar','NSYD3340');
+INSERT INTO Book (bid,btitle,edition,content,catid) VALUES ('QEDL4413','A Confederacy of Dunces',8,'The content of book: A Confederacy of Dunces','ESCF0068');
+INSERT INTO Book (bid,btitle,edition,content,catid) VALUES ('HZLE2432','The Trial',1,'The content of book: The Trial','HPNL1208');
+INSERT INTO Book (bid,btitle,edition,content,catid) VALUES ('LQVR8230','Finnegans Wake',4,'The content of book: Finnegans Wake','HCEE1463');
+INSERT INTO Book (bid,btitle,edition,content,catid) VALUES ('VOTV6503','Sons and Lovers',1,'The content of book: Sons and Lovers','LQVR8230');
+INSERT INTO Book (bid,btitle,edition,content,catid) VALUES ('VDNT9283','Gravitys Rainbow',3,'The content of book: Gravitys Rainbow','VOTV6503');
+INSERT INTO Book (bid,btitle,edition,content,catid) VALUES ('SQXZ1306','The Old Man and the Sea',3,'The content of book: The Old Man...','TSOW8238');
 
 -- Conference_proceedings
-INSERT INTO Conference_proceedings (cpid,cptitle,content) VALUES ('KQZJ4175','Iterated mutation in an evolutionary algorithm for Sudoku',1);
-INSERT INTO Conference_proceedings (cpid,cptitle,content) VALUES ('VXWY8161','Probabilistic neural networks structure optimization through genetic algorithms for recognizing faces under illumination variations',1);
-INSERT INTO Conference_proceedings (cpid,cptitle,content) VALUES ('BKGN1857','Wind Power Plant Prediction by Using Neural Networks',1);
-INSERT INTO Conference_proceedings (cpid,cptitle,content) VALUES ('IXNJ8371','CFD analysis of pre-cooling water spray system in natural draft dry cooling towers',1);
-INSERT INTO Conference_proceedings (cpid,cptitle,content) VALUES ('ITCL7144','Host computer software design of MAA hydrolysis reaction based on WINCC configuration software',1);
+INSERT INTO Conference_proceedings (cid,cptitle,content,catid) VALUES ('KQZJ4175','Iterated mutation in an evolutionary algorithm for Sudoku',1,'ERRZ8161');
+INSERT INTO Conference_proceedings (cid,cptitle,content,catid) VALUES ('VXWY8161','Probabilistic neural networks structure optimization through genetic algorithms for recognizing faces under illumination variations',1,'VDNT9283');
+INSERT INTO Conference_proceedings (cid,cptitle,content,catid) VALUES ('BKGN1857','Wind Power Plant Prediction by Using Neural Networks',1,'SQXZ1306');
+INSERT INTO Conference_proceedings (cid,cptitle,content,catid) VALUES ('IXNJ8371','CFD analysis of pre-cooling water spray system in natural draft dry cooling towers',1,'YQHH6457');
+INSERT INTO Conference_proceedings (cid,cptitle,content,catid) VALUES ('ITCL7144','Host computer software design of MAA hydrolysis reaction based on WINCC configuration software',1,'NPPH3852');
 
 -- Publishes
 INSERT INTO Publishes (catid,pcid,year) VALUES ('YZAQ6317',37270,1998);
@@ -378,7 +378,6 @@ INSERT INTO Writes (catid,pid) VALUES ('QEDL4413',117);
 INSERT INTO Writes (catid,pid) VALUES ('HZLE2432',151);
 INSERT INTO Writes (catid,pid) VALUES ('HZLE2432',103);
 INSERT INTO Writes (catid,pid) VALUES ('HZLE2432',153);
-INSERT INTO Writes (catid,pid) VALUES ('HZLE2432',131);
 INSERT INTO Writes (catid,pid) VALUES ('HZLE2432',120);
 INSERT INTO Writes (catid,pid) VALUES ('LQVR8230',150);
 INSERT INTO Writes (catid,pid) VALUES ('VOTV6503',147);
@@ -391,30 +390,30 @@ INSERT INTO Writes (catid,pid) VALUES ('IXNJ8371',120);
 INSERT INTO Writes (catid,pid) VALUES ('ITCL7144',120);
 
 -- Reference
-INSERT INTO Reference (catid,ref_id) VALUES ('YZAQ6317','TSOW8238');
-INSERT INTO Reference (catid,ref_id) VALUES ('ABIQ2755','IXUU3646');
-INSERT INTO Reference (catid,ref_id) VALUES ('TSOW8238','ZLYG9928');
-INSERT INTO Reference (catid,ref_id) VALUES ('ERRZ8161','NPPH3852');
-INSERT INTO Reference (catid,ref_id) VALUES ('ERRZ8161','YQHH6457');
-INSERT INTO Reference (catid,ref_id) VALUES ('ERRZ8161','IXUU3646');
-INSERT INTO Reference (catid,ref_id) VALUES ('ZLYG9928','ITCL7144');
-INSERT INTO Reference (catid,ref_id) VALUES ('UENO6668','ZLYG9928');
-INSERT INTO Reference (catid,ref_id) VALUES ('RYMF2195','ITCL7144');
-INSERT INTO Reference (catid,ref_id) VALUES ('RHBY3015','CEVT7059');
-INSERT INTO Reference (catid,ref_id) VALUES ('RHBY3015','VOTV6503');
-INSERT INTO Reference (catid,ref_id) VALUES ('RHBY3015','VXWY8161');
-INSERT INTO Reference (catid,ref_id) VALUES ('ESCF0068','ERRZ8161');
-INSERT INTO Reference (catid,ref_id) VALUES ('ESCF0068','YQHH6457');
-INSERT INTO Reference (catid,ref_id) VALUES ('IXUU3646','BKGN1857');
-INSERT INTO Reference (catid,ref_id) VALUES ('NJEQ6977','ESCF0068');
-INSERT INTO Reference (catid,ref_id) VALUES ('NJEQ6977','IXUU3646');
-INSERT INTO Reference (catid,ref_id) VALUES ('NJEQ6977','LHHD8542');
-INSERT INTO Reference (catid,ref_id) VALUES ('NJEQ6977','ZLYG9928');
-INSERT INTO Reference (catid,ref_id) VALUES ('QEDL4413','BKGN1857');
-INSERT INTO Reference (catid,ref_id) VALUES ('VOTV6503','BKGN1857');
-INSERT INTO Reference (catid,ref_id) VALUES ('SQXZ1306','VOTV6503');
-INSERT INTO Reference (catid,ref_id) VALUES ('SQXZ1306','ESCF0068');
-INSERT INTO Reference (catid,ref_id) VALUES ('IXNJ8371','NJEQ6977');
+INSERT INTO Reference (catid,cite_id) VALUES ('YZAQ6317','TSOW8238');
+INSERT INTO Reference (catid,cite_id) VALUES ('ABIQ2755','IXUU3646');
+INSERT INTO Reference (catid,cite_id) VALUES ('TSOW8238','ZLYG9928');
+INSERT INTO Reference (catid,cite_id) VALUES ('ERRZ8161','NPPH3852');
+INSERT INTO Reference (catid,cite_id) VALUES ('ERRZ8161','YQHH6457');
+INSERT INTO Reference (catid,cite_id) VALUES ('ERRZ8161','IXUU3646');
+INSERT INTO Reference (catid,cite_id) VALUES ('ZLYG9928','ITCL7144');
+INSERT INTO Reference (catid,cite_id) VALUES ('UENO6668','ZLYG9928');
+INSERT INTO Reference (catid,cite_id) VALUES ('RYMF2195','ITCL7144');
+INSERT INTO Reference (catid,cite_id) VALUES ('RHBY3015','CEVT7059');
+INSERT INTO Reference (catid,cite_id) VALUES ('RHBY3015','VOTV6503');
+INSERT INTO Reference (catid,cite_id) VALUES ('RHBY3015','VXWY8161');
+INSERT INTO Reference (catid,cite_id) VALUES ('ESCF0068','ERRZ8161');
+INSERT INTO Reference (catid,cite_id) VALUES ('ESCF0068','YQHH6457');
+INSERT INTO Reference (catid,cite_id) VALUES ('IXUU3646','BKGN1857');
+INSERT INTO Reference (catid,cite_id) VALUES ('NJEQ6977','ESCF0068');
+INSERT INTO Reference (catid,cite_id) VALUES ('NJEQ6977','IXUU3646');
+INSERT INTO Reference (catid,cite_id) VALUES ('NJEQ6977','LHHD8542');
+INSERT INTO Reference (catid,cite_id) VALUES ('NJEQ6977','ZLYG9928');
+INSERT INTO Reference (catid,cite_id) VALUES ('QEDL4413','BKGN1857');
+INSERT INTO Reference (catid,cite_id) VALUES ('VOTV6503','BKGN1857');
+INSERT INTO Reference (catid,cite_id) VALUES ('SQXZ1306','VOTV6503');
+INSERT INTO Reference (catid,cite_id) VALUES ('SQXZ1306','ESCF0068');
+INSERT INTO Reference (catid,cite_id) VALUES ('IXNJ8371','NJEQ6977');
 
 -- Located_at
 INSERT INTO Located_at (pcid,street,city,state) VALUES (15587,'6850 Pharetra. St.','Shreveport','Colorado');
@@ -451,7 +450,7 @@ INSERT INTO Lives_at (pid,street,city,state) VALUES (102,'723 Imperdiet, St.','D
 INSERT INTO Lives_at (pid,street,city,state) VALUES (103,'Ap #426-3290 Arcu. Road','Arquata del Tronto','Minnesota');
 INSERT INTO Lives_at (pid,street,city,state) VALUES (106,'Ap #983-1695 Sagittis. St.','Orai','Minnesota');
 INSERT INTO Lives_at (pid,street,city,state) VALUES (107,'777-7445 Non Avenue','Wodonga','Nebraska');
-INSERT INTO Lives_at (pid,street,city,state) VALUES (108,'591-127 Id, Avenue','Dublin','Pennsylvania');	
+INSERT INTO Lives_at (pid,street,city,state) VALUES (108,'591-127 Id, Avenue','Dublin','Pennsylvania');
 INSERT INTO Lives_at (pid,street,city,state) VALUES (117,'777-7445 Non Avenue','Wodonga','Nebraska');
 INSERT INTO Lives_at (pid,street,city,state) VALUES (118,'784-5985 Magna. Avenue','Cáceres','Nebraska');
 INSERT INTO Lives_at (pid,street,city,state) VALUES (119,'3200 Quisque St.','Waitara','Minnesota');
@@ -477,13 +476,13 @@ INSERT INTO Lives_at (pid,street,city,state) VALUES (152,'P.O. Box 232, 5659 Sed
 INSERT INTO Lives_at (pid,street,city,state) VALUES (153,'703-9416 Semper St.','Borno','Michigan');
 
 -- Creates
-INSERT INTO Creates (vid,user_id,sid) VALUES (1000,'u1000','HTC81ARU6VV',);
-INSERT INTO Creates (vid,user_id,sid) VALUES (1050,'u1050','JZK68EZI9CN',);
-INSERT INTO Creates (vid,user_id,sid) VALUES (1100,'u1100','LAY62ERU4CX',);
-INSERT INTO Creates (vid,user_id,sid) VALUES (1150,'u1150','MRN33QSD9ZS',);
-INSERT INTO Creates (vid,user_id,sid) VALUES (1200,'u1200','AYG49JID9QS',);
-INSERT INTO Creates (vid,user_id,sid) VALUES (1250,'u1250','ULB07XAU1AJ',);
-INSERT INTO Creates (vid,user_id,sid) VALUES (1300,'u1300','DGK38CIH5HH',);
-INSERT INTO Creates (vid,user_id,sid) VALUES (1350,'u1350','NNP32LKF4VK',);
-INSERT INTO Creates (vid,user_id,sid) VALUES (1400,'u1400','QWE93IZB7XI',);
-INSERT INTO Creates (vid,user_id,sid) VALUES (1450,'u1450','ALC68UVE0WM',);
+INSERT INTO Creates (vid,user_id,sid) VALUES (1000,'u1000','HTC81ARU6VV');
+INSERT INTO Creates (vid,user_id,sid) VALUES (1050,'u1050','JZK68EZI9CN');
+INSERT INTO Creates (vid,user_id,sid) VALUES (1100,'u1100','LAY62ERU4CX');
+INSERT INTO Creates (vid,user_id,sid) VALUES (1150,'u1150','MRN33QSD9ZS');
+INSERT INTO Creates (vid,user_id,sid) VALUES (1200,'u1200','AYG49JID9QS');
+INSERT INTO Creates (vid,user_id,sid) VALUES (1250,'u1250','ULB07XAU1AJ');
+INSERT INTO Creates (vid,user_id,sid) VALUES (1300,'u1300','DGK38CIH5HH');
+INSERT INTO Creates (vid,user_id,sid) VALUES (1350,'u1350','NNP32LKF4VK');
+INSERT INTO Creates (vid,user_id,sid) VALUES (1400,'u1400','QWE93IZB7XI');
+INSERT INTO Creates (vid,user_id,sid) VALUES (1450,'u1450','ALC68UVE0WM');

@@ -1,10 +1,11 @@
+
 CREATE TABLE Person (
   pid number default NULL,
   pname varchar2(255) default NULL,
   email varchar2(255) default NULL,
   PRIMARY KEY (pid)
 );
- 
+
 CREATE TABLE Author (
   pid number NOT NULL references person(pid),
   PRIMARY KEY (pid)
@@ -68,12 +69,12 @@ CREATE TABLE Magazine (
   jvol number,
   content varchar2(255),
   catid varchar2(255) NOT NULL references Catalog_item(catid),
-  PRIMARY KEY (mid, catid) ); 
-  
+  PRIMARY KEY (mid, catid) );
+
 CREATE TABLE Book (
   bid varchar2(255),
   btitle varchar2(255),
-  jvol number,
+  edition number,
   content varchar2(255),
   catid varchar2(255) NOT NULL references Catalog_item(catid),
   PRIMARY KEY (bid, catid) );
@@ -93,45 +94,45 @@ CREATE TABLE Reference (
   FOREIGN KEY (catid) references Catalog_item );
 
 CREATE TABLE creates (
-  vid  number,  
-  sid  varchar2(255) NOT NULL, 
+  vid  number,
+  sid  varchar2(255) NOT NULL,
   user_id  varchar2(255) NOT NULL,
   PRIMARY KEY (vid, sid, user_id),
   FOREIGN KEY (vid) references Viewer,
   FOREIGN KEY (sid) references Subscription,
-  FOREIGN KEY (user_id) references Users );  
+  FOREIGN KEY (user_id) references Users );
 
 CREATE TABLE Search (
-  vid number NOT NULL, 
+  vid number NOT NULL,
   catid varchar2(255),
   PRIMARY KEY (vid, catid),
   FOREIGN KEY (vid) references Viewer,
   FOREIGN KEY (catid) references Catalog_item );
-  
+
 CREATE TABLE Retrieve (
   user_id varchar2(255),
   catid varchar2(255),
   PRIMARY KEY (user_id, catid),
   FOREIGN KEY (user_id) references Users,
-  FOREIGN KEY (catid) references Catalog_item ); 
-  
+  FOREIGN KEY (catid) references Catalog_item );
+
 CREATE TABLE Writes (
   catid varchar2(255) NOT NULL,
   pid number NOT NULL,
   PRIMARY KEY (catid, pid),
-  FOREIGN KEY (catid) references Catalog_item, 
-  FOREIGN KEY (pid) references Author );  
-  
+  FOREIGN KEY (catid) references Catalog_item,
+  FOREIGN KEY (pid) references Author );
+
 CREATE TABLE Edits (
   catid varchar2(255) NOT NULL,
   pid number NOT NULL,
   PRIMARY KEY (catid, pid),
-  FOREIGN KEY (catid) references Catalog_item, 
-  FOREIGN KEY (pid) references Editor );   
-  
+  FOREIGN KEY (catid) references Catalog_item,
+  FOREIGN KEY (pid) references Editor );
+
 CREATE TABLE Publishes (
   catid varchar2(255) NOT NULL,
-  pcid number NOT NULL, 
+  pcid number NOT NULL,
   year number,
   PRIMARY KEY (catid, pcid),
   FOREIGN KEY (catid) references Catalog_item,
@@ -147,7 +148,7 @@ CREATE TABLE Located_at (
   FOREIGN KEY (street, city, state) references Address );
 
 CREATE TABLE Lives_At (
-  pid number NOT NULL, 
+  pid number NOT NULL,
   street varchar2(255),
   city varchar2(255),
   state varchar2(255),
