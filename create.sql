@@ -60,31 +60,31 @@ CREATE TABLE Journal (
   jtitle varchar2(255),
   jvol number,
   content varchar2(255),
-  catid varchar2(255) NOT NULL references Catalog_item(catid),
-  PRIMARY KEY (jid, catid) );
+  PRIMARY KEY (jid),
+  FOREIGN KEY (jid) references Catalog_item(catid) );
 
 CREATE TABLE Magazine (
   mid varchar2(255),
   mtitle varchar2(255),
   jvol number,
   content varchar2(255),
-  catid varchar2(255) NOT NULL references Catalog_item(catid),
-  PRIMARY KEY (mid, catid) );
+  PRIMARY KEY (mid),
+  FOREIGN KEY (mid) references Catalog_item(catid) );
 
 CREATE TABLE Book (
   bid varchar2(255),
   btitle varchar2(255),
   edition number,
   content varchar2(255),
-  catid varchar2(255) NOT NULL references Catalog_item(catid),
-  PRIMARY KEY (bid, catid) );
+  PRIMARY KEY (bid),
+  FOREIGN KEY (bid) references Catalog_item(catid) );
 
 CREATE TABLE Conference_proceedings (
   cid varchar2(255),
   cptitle varchar2(255),
   content varchar2(255),
-  catid varchar2(255) NOT NULL references Catalog_item(catid),
-  PRIMARY KEY (cid, catid) );
+  PRIMARY KEY (cid),
+  FOREIGN KEY (cid) references Catalog_item(catid) );
 
 
 CREATE TABLE Reference (
