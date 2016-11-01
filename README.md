@@ -1,8 +1,8 @@
 # CSCI411Project2
 
-List of queries
+## List of queries
 
-Queries
+### Queries
 
 1) What is the range (in years) of the age of books in the library. - Micah
 
@@ -24,9 +24,9 @@ Queries
 
 10) List catalog items that were published in the same state that a user is from and has retrieved. - Micah
 
-Proceedures
+### Proceedures
 
- - Query type
+#### Query type
 
 1) Find the sids and unames of people who's subscriptions expires within 30 days. - Tim
 
@@ -38,7 +38,7 @@ Proceedures
 
 5) Display the catalog item title and catid of items whose contract is going to expire within 30 days. - Ashish
 
- - Modify type
+#### Modify type
 
 6) Allow an author to submit work. - Tim
 
