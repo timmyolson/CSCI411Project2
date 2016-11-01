@@ -39,9 +39,9 @@ CREATE TABLE Subscription (
 );
 
 CREATE TABLE Users (
-  user_id varchar2(20) default NULL,
+  pid number NOT NULL references person(pid),
   uname varchar2(255) default NULL,
-  PRIMARY KEY (user_id)
+  PRIMARY KEY (pid)
 );
 
 CREATE TABLE Viewer (
@@ -93,14 +93,14 @@ CREATE TABLE Reference (
   PRIMARY KEY (catid, cite_id),
   FOREIGN KEY (catid) references Catalog_item );
 
-CREATE TABLE creates (
+CREATE TABLE Creates (
   vid  number,
+  pid  number,
   sid  varchar2(255) NOT NULL,
-  user_id  varchar2(255) NOT NULL,
-  PRIMARY KEY (vid, sid, user_id),
+  PRIMARY KEY (vid, sid, pid),
   FOREIGN KEY (vid) references Viewer,
   FOREIGN KEY (sid) references Subscription,
-  FOREIGN KEY (user_id) references Users );
+  FOREIGN KEY (pid) references Users );
 
 CREATE TABLE Search (
   vid number NOT NULL,
@@ -110,10 +110,10 @@ CREATE TABLE Search (
   FOREIGN KEY (catid) references Catalog_item );
 
 CREATE TABLE Retrieve (
-  user_id varchar2(255),
+  pid number,
   catid varchar2(255),
-  PRIMARY KEY (user_id, catid),
-  FOREIGN KEY (user_id) references Users,
+  PRIMARY KEY (pid, catid),
+  FOREIGN KEY (pid) references Users,
   FOREIGN KEY (catid) references Catalog_item );
 
 CREATE TABLE Writes (
