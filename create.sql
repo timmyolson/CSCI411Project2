@@ -1,8 +1,8 @@
 
 CREATE TABLE Person (
   pid number default NULL,
-  pname varchar2(255) default NULL,
-  email varchar2(255) default NULL,
+  pname varchar2(30) default NULL,
+  email varchar2(50) default NULL,
   PRIMARY KEY (pid)
 );
 
@@ -18,29 +18,28 @@ CREATE TABLE Editor (
 
 CREATE TABLE Publishing_Company (
   pcid number default NULL,
-  pcname varchar2(255) default NULL,
-  phone varchar2(100) default NULL,
+  pcname varchar2(80) default NULL,
+  phone varchar2(20) default NULL,
   PRIMARY KEY (pcid)
 );
 
 CREATE TABLE Address (
-  street varchar2(255) NOT NULL,
-  city varchar2(255) NOT NULL,
-  state varchar2(50) NOT NULL,
+  street varchar2(50) NOT NULL,
+  city varchar2(30) NOT NULL,
+  state varchar2(20) NOT NULL,
   PRIMARY KEY (street, city, state)
 );
 
 CREATE TABLE Subscription (
-  sid varchar2(255),
-  slen varchar2(50) default NULL,
-  begin_date varchar2(255),
-  fee varchar2(100) default NULL,
+  sid varchar2(11),
+  slen number,
+  begin_date date,
+  fee varchar2(10) default NULL,
   PRIMARY KEY (sid)
 );
 
 CREATE TABLE Users (
   pid number NOT NULL references person(pid),
-  uname varchar2(255) default NULL,
   PRIMARY KEY (pid)
 );
 
@@ -50,46 +49,46 @@ CREATE TABLE Viewer (
 );
 
 CREATE TABLE Catalog_item (
-  catid varchar2(255),
-  contract_term varchar2(255),
+  catid varchar2(10),
+  contract_term date,
   PRIMARY KEY (catid)
 );
 
 CREATE TABLE Journal (
-  jid varchar2(255),
-  jtitle varchar2(255),
+  jid varchar2(10),
+  jtitle varchar2(80),
   jvol number,
-  content varchar2(255),
+  content varchar2(80),
   PRIMARY KEY (jid),
   FOREIGN KEY (jid) references Catalog_item(catid) );
 
 CREATE TABLE Magazine (
-  mid varchar2(255),
-  mtitle varchar2(255),
+  mid varchar2(10),
+  mtitle varchar2(80),
   jvol number,
-  content varchar2(255),
+  content varchar2(80),
   PRIMARY KEY (mid),
   FOREIGN KEY (mid) references Catalog_item(catid) );
 
 CREATE TABLE Book (
-  bid varchar2(255),
-  btitle varchar2(255),
+  bid varchar2(10),
+  btitle varchar2(80),
   edition number,
-  content varchar2(255),
+  content varchar2(80),
   PRIMARY KEY (bid),
   FOREIGN KEY (bid) references Catalog_item(catid) );
 
 CREATE TABLE Conference_proceedings (
-  cid varchar2(255),
-  cptitle varchar2(255),
-  content varchar2(255),
+  cid varchar2(10),
+  cptitle varchar2(150),
+  content varchar2(80),
   PRIMARY KEY (cid),
   FOREIGN KEY (cid) references Catalog_item(catid) );
 
 
 CREATE TABLE Reference (
-  catid varchar2(255),
-  cite_id varchar2(255),
+  catid varchar2(10),
+  cite_id varchar2(10),
   PRIMARY KEY (catid, cite_id),
   FOREIGN KEY (catid) references Catalog_item );
 
@@ -111,47 +110,47 @@ CREATE TABLE Search (
 
 CREATE TABLE Retrieve (
   pid number,
-  catid varchar2(255),
+  catid varchar2(10),
   PRIMARY KEY (pid, catid),
   FOREIGN KEY (pid) references Users,
   FOREIGN KEY (catid) references Catalog_item );
 
 CREATE TABLE Writes (
-  catid varchar2(255) NOT NULL,
+  catid varchar2(10) NOT NULL,
   pid number NOT NULL,
   PRIMARY KEY (catid, pid),
   FOREIGN KEY (catid) references Catalog_item,
   FOREIGN KEY (pid) references Author );
 
 CREATE TABLE Edits (
-  catid varchar2(255) NOT NULL,
+  catid varchar2(10) NOT NULL,
   pid number NOT NULL,
   PRIMARY KEY (catid, pid),
   FOREIGN KEY (catid) references Catalog_item,
   FOREIGN KEY (pid) references Editor );
 
 CREATE TABLE Publishes (
-  catid varchar2(255) NOT NULL,
+  catid varchar2(10) NOT NULL,
   pcid number NOT NULL,
-  year number,
+  publish_date date,
   PRIMARY KEY (catid, pcid),
   FOREIGN KEY (catid) references Catalog_item,
   FOREIGN KEY (pcid) references Publishing_Company );
 
 CREATE TABLE Located_at (
   pcid number NOT NULL,
-  street varchar2(255),
-  city varchar(255),
-  state varchar(255),
+  street varchar2(50) NOT NULL,
+  city varchar2(30) NOT NULL,
+  state varchar2(20) NOT NULL,
   PRIMARY KEY (pcid, street, city, state),
   FOREIGN KEY (pcid) references Publishing_Company,
   FOREIGN KEY (street, city, state) references Address );
 
 CREATE TABLE Lives_At (
   pid number NOT NULL,
-  street varchar2(255),
-  city varchar2(255),
-  state varchar2(255),
+  street varchar2(50) NOT NULL,
+  city varchar2(30) NOT NULL,
+  state varchar2(20) NOT NULL,
   PRIMARY KEY (pid, street, city, state),
   FOREIGN KEY (pid) references Person,
   FOREIGN KEY (street, city, state) references Address );
