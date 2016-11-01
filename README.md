@@ -1,3 +1,5 @@
+I can't create Tables with the given code on create.sql,  lot of errors. Did you guys use create.sql to create table? : Ashish
+
 # CSCI411Project2
 
 ## List of queries
