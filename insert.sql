@@ -13,7 +13,7 @@ INSERT INTO Person (pid,pname,email) VALUES (121,'Victoria Holder','mollis@Nunc.
 INSERT INTO Person (pid,pname,email) VALUES (122,'Aspen Ayala','dolor.Donec@vitaemaurissit.net');
 INSERT INTO Person (pid,pname,email) VALUES (123,'Melissa Hernandez','laoreet.lectus.quis@non.co.uk');
 INSERT INTO Person (pid,pname,email) VALUES (124,'Bertha Santos','porta.elit@blanditat.org');
-INSERT INTO Person (pid,pname,email) VALUES (125,'Barbara Page','erat.Etiam@mollis.edu');
+INSERT INTO Person (pid,pname,email) VALUES (125,'Ishmiel Tota','erat.Etiam@mollis.edu');
 INSERT INTO Person (pid,pname,email) VALUES (126,'Iliana Peterson','luctus.ipsum@scelerisque.com');
 INSERT INTO Person (pid,pname,email) VALUES (130,'Conan Johns','sagittis.felis@Suspendisseseddolor.edu');
 INSERT INTO Person (pid,pname,email) VALUES (131,'Candice Clemons','nascetur.ridiculus.mus@eueuismod.com');
@@ -163,16 +163,16 @@ INSERT INTO Subscription (sid,slen,begin_date,fee) VALUES ('QWE93IZB7XI',8,'31-A
 INSERT INTO Subscription (sid,slen,begin_date,fee) VALUES ('ALC68UVE0WM',12,'27-Oct-27','$700');
 
 -- User
-INSERT INTO Users (uname,pid) VALUES ('graiden.wilkins',102);
-INSERT INTO Users (uname,pid) VALUES ('reese.harper',108);
-INSERT INTO Users (uname,pid) VALUES ('talon.shelton',117);
-INSERT INTO Users (uname,pid) VALUES ('donald.hamnes',118);
-INSERT INTO Users (uname,pid) VALUES ('jacob.wheeler',120);
-INSERT INTO Users (uname,pid) VALUES ('victoria.holder',121);
-INSERT INTO Users (uname,pid) VALUES ('bertha.santos',124);
-INSERT INTO Users (uname,pid) VALUES ('barbara.page',125);
-INSERT INTO Users (uname,pid) VALUES ('iliana.peterson',126);
-INSERT INTO Users (uname,pid) VALUES ('olga.martinez',141);
+INSERT INTO Users (uname,pid) VALUES ('gwilkins',102);
+INSERT INTO Users (uname,pid) VALUES ('rharper',108);
+INSERT INTO Users (uname,pid) VALUES ('tshelton',117);
+INSERT INTO Users (uname,pid) VALUES ('dhamnes',118);
+INSERT INTO Users (uname,pid) VALUES ('jwheeler',120);
+INSERT INTO Users (uname,pid) VALUES ('vholder',121);
+INSERT INTO Users (uname,pid) VALUES ('bsantos',124);
+INSERT INTO Users (uname,pid) VALUES ('itota',125);
+INSERT INTO Users (uname,pid) VALUES ('ipeterson',126);
+INSERT INTO Users (uname,pid) VALUES ('omartinez',141);
 
 -- Viewer
 INSERT INTO Viewer (vid) VALUES (200);
