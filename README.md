@@ -30,7 +30,7 @@
 
 #### Query type
 
-1) Find the sids and unames of people who's subscriptions expires within 30 days. - Tim
+1) Find names, unames, and emails of people who's subscriptions have expired. - Tim
 
 2) View or Retieve for a catalog item. Then update the search|retrieve table. - Ashish
 
