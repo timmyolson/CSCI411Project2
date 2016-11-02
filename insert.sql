@@ -298,7 +298,7 @@ INSERT INTO Publishes (catid,pcid,publish_date) VALUES ('CEVT7059',45762,'30-JUL
 INSERT INTO Publishes (catid,pcid,publish_date) VALUES ('VMGS7843',73243,'14-JUN-2011');
 INSERT INTO Publishes (catid,pcid,publish_date) VALUES ('QEDL4413',28954,'14-DEC-2002');
 INSERT INTO Publishes (catid,pcid,publish_date) VALUES ('HZLE2432',44641,'02-JUN-2003');
-INSERT INTO Publishes (catid,pcid,publish_date) VALUES ('LQVR8230',76522,'02-DEC-1978');
+INSERT INTO Publishes (catid,pcid,publish_date) VALUES ('LQVR8230',76522,'02-DEC-1994');
 INSERT INTO Publishes (catid,pcid,publish_date) VALUES ('VOTV6503',14891,'01-JAN-1997');
 INSERT INTO Publishes (catid,pcid,publish_date) VALUES ('VDNT9283',98567,'12-MAR-1999');
 INSERT INTO Publishes (catid,pcid,publish_date) VALUES ('SQXZ1306',25228,'09-JUN-2014');
