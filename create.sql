@@ -61,7 +61,8 @@ CREATE TABLE Journal (
   jvol number,
   content varchar2(80),
   PRIMARY KEY (jid),
-  FOREIGN KEY (jid) references Catalog_item(catid) );
+  FOREIGN KEY (jid) references Catalog_item(catid)
+  ON DELETE CASCADE );
 
 CREATE TABLE Magazine (
   mid varchar2(10),
@@ -69,7 +70,8 @@ CREATE TABLE Magazine (
   jvol number,
   content varchar2(80),
   PRIMARY KEY (mid),
-  FOREIGN KEY (mid) references Catalog_item(catid) );
+  FOREIGN KEY (mid) references Catalog_item(catid) 
+  ON DELETE CASCADE );
 
 CREATE TABLE Book (
   bid varchar2(10),
@@ -77,14 +79,16 @@ CREATE TABLE Book (
   edition number,
   content varchar2(80),
   PRIMARY KEY (bid),
-  FOREIGN KEY (bid) references Catalog_item(catid) );
+  FOREIGN KEY (bid) references Catalog_item(catid) 
+  ON DELETE CASCADE );
 
 CREATE TABLE Conference_proceedings (
   cid varchar2(10),
   cptitle varchar2(150),
   content varchar2(80),
   PRIMARY KEY (cid),
-  FOREIGN KEY (cid) references Catalog_item(catid) );
+  FOREIGN KEY (cid) references Catalog_item(catid)
+  ON DELETE CASCADE );
 
 
 CREATE TABLE Reference (
