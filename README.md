@@ -30,13 +30,13 @@
 
 #### Query type
 
-1) Find names, unames, and emails of people who's subscriptions have expired. - Tim
+~~1) Find names, unames, and emails of people who's subscriptions have expired. - Tim~~
 
 2) View or Retieve for a catalog item. Then update the search|retrieve table. - Ashish
 
 3) Display an article written by an author. - Ashish
 
-4) Search catalog items - Tim
+~~4) Search catalog items - Tim~~
 
 5) Display the catalog item title and catid of items whose contract is going to expire within 30 days. - Ashish
 
@@ -46,8 +46,8 @@
 
 7) Remove a catalog item from the database whose contract has expired. - Tim
 
-8) Update a user's email address. - Tim
+~~8) Update a user's email address. - Tim~~
 
-9) Update a user's subscription status (the user extends this period). - Tim
+~~9) Update a user's subscription status (the user extends this period). - Tim~~
 
 10) Delete a person by id if they are not author. - Ashish
