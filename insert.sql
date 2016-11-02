@@ -151,16 +151,16 @@ INSERT INTO Address (street,city,state) VALUES ('9147 Nec Rd.','Coltauco','Rhode
 INSERT INTO Address (street,city,state) VALUES ('625-4729 Ipsum Road','Châtellerault','Delaware');
 
 -- Subscription
-INSERT INTO Subscription (sid,slen,begin_date,fee) VALUES ('HTC81ARU6VV',12,'19-Nov-19','$700');
-INSERT INTO Subscription (sid,slen,begin_date,fee) VALUES ('JZK68EZI9CN',23,'19-Apr-19','$1320');
-INSERT INTO Subscription (sid,slen,begin_date,fee) VALUES ('LAY62ERU4CX',12,'23-Sep-23','$700');
-INSERT INTO Subscription (sid,slen,begin_date,fee) VALUES ('MRN33QSD9ZS',3,'10-Jun-10','$900');
-INSERT INTO Subscription (sid,slen,begin_date,fee) VALUES ('AYG49JID9QS',2,'24-May-24','$900');
-INSERT INTO Subscription (sid,slen,begin_date,fee) VALUES ('ULB07XAU1AJ',8,'21-Jan-21','$700');
-INSERT INTO Subscription (sid,slen,begin_date,fee) VALUES ('DGK38CIH5HH',18,'05-Jan-05','$500');
-INSERT INTO Subscription (sid,slen,begin_date,fee) VALUES ('NNP32LKF4VK',12,'07-Sep-07','$700');
-INSERT INTO Subscription (sid,slen,begin_date,fee) VALUES ('QWE93IZB7XI',8,'31-Aug-31','$900');
-INSERT INTO Subscription (sid,slen,begin_date,fee) VALUES ('ALC68UVE0WM',12,'27-Oct-27','$700');
+INSERT INTO Subscription (sid,slen,begin_date,fee) VALUES ('HTC81ARU6VV',12,'19-Nov-2019','$700');
+INSERT INTO Subscription (sid,slen,begin_date,fee) VALUES ('JZK68EZI9CN',23,'19-Apr-2019','$1320');
+INSERT INTO Subscription (sid,slen,begin_date,fee) VALUES ('LAY62ERU4CX',12,'23-Sep-2023','$700');
+INSERT INTO Subscription (sid,slen,begin_date,fee) VALUES ('MRN33QSD9ZS',3,'10-Jun-2010','$900');
+INSERT INTO Subscription (sid,slen,begin_date,fee) VALUES ('AYG49JID9QS',2,'24-May-2024','$900');
+INSERT INTO Subscription (sid,slen,begin_date,fee) VALUES ('ULB07XAU1AJ',8,'21-Jan-2021','$700');
+INSERT INTO Subscription (sid,slen,begin_date,fee) VALUES ('DGK38CIH5HH',18,'05-Jan-2005','$500');
+INSERT INTO Subscription (sid,slen,begin_date,fee) VALUES ('NNP32LKF4VK',12,'07-Sep-2007','$700');
+INSERT INTO Subscription (sid,slen,begin_date,fee) VALUES ('QWE93IZB7XI',8,'31-Aug-2031','$900');
+INSERT INTO Subscription (sid,slen,begin_date,fee) VALUES ('ALC68UVE0WM',12,'27-Oct-2027','$700');
 
 -- User
 INSERT INTO Users (uname,pid) VALUES ('gwilkins',102);
