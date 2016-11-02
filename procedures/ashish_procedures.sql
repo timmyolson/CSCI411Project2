@@ -19,17 +19,17 @@ BEGIN
     END IF;
 END;
 
---display what author wrote --doesnnt work, says procedure created while running nothing happens
+--display what author wrote --
 create or replace PROCEDURE  Author_writes(
-    Nam_e IN Person_p2.pname%TYPE
+    Nam_e IN Person.pname%TYPE
   )
 IS
-    CURSOR Catalog_item(
-       Full_name Person_p2.pname%TYPE
+    CURSOR Catalog_cur(
+       Full_name Person.pname%TYPE
     )
     IS
-        SELECT c.*
-            FROM Person_p2 P, Author_p2 a,  Writes_p2 W, catalog_item_p2 c
+        SELECT distinct c.*
+            FROM Person P, Author a,  Writes W, catalog_item c
             
             WHERE P.pid = a.pid
             AND a.pid = W.pid
@@ -38,43 +38,13 @@ IS
             
             AND P.pname LIKE '%' || Nam_e||'%';
             
-    Articlefind catalog_item_p2%ROWTYPE;
+    Articlefind catalog_item%ROWTYPE;
 BEGIN
-    FOR articlefind IN Catalog_item(Nam_e)
+    FOR articlefind IN Catalog_cur(Nam_e)
     LOOP
 							 --articleid						--article title
-        dbms_output.put_line(articlefind.catid|| chr(10) );
+        dbms_output.put_line(articlefind.catid || chr(10) );
     END LOOP;
-
-
-END Author_writes;
-
---2nd version which freezes up in cursor
-create or replace PROCEDURE  Author_writes(x in varchar2) as catalog_item_p2 char(10);
-
-cursor cur is
-select distinct p.pname
-from person_p2 p, book_p2 b,author_p2 a,journal_p2 j, magazine_p2 m, conference_proceedings_p2 cp,  catalog_item_p2 c , writes_p2 w
-
-                where p.pname = X and
-                p.pid= a.pid and
-                a.pid=w.pid and
-                w.catid =c.catid or
-                j.jid=c.catid or
-                 m.mid=c.catid or
-                 b.bid=c.catid or
-                cp.cid=c.catid   ;
-   BEGIN
-  open cur;
-    dbms_output.put_line(X||' has written ');
-        LOOP
-            fetch cur into catalog_item_p2;
-            IF cur%NOTFOUND
-            THEN EXIT;
-            END IF;
-       dbms_output.put_line(catalog_item_p2);
-       END LOOP;
-  CLOSE cur;
 END Author_writes;
 
 --check expiration and display the catid and title... data overflow and repeat
