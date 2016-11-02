@@ -61,8 +61,7 @@ CREATE TABLE Journal (
   jvol number,
   content varchar2(80),
   PRIMARY KEY (jid),
-  FOREIGN KEY (jid) references Catalog_item(catid)
-  ON DELETE CASCADE );
+  FOREIGN KEY (jid) references Catalog_item(catid) ON DELETE CASCADE );
 
 CREATE TABLE Magazine (
   mid varchar2(10),
@@ -70,8 +69,7 @@ CREATE TABLE Magazine (
   jvol number,
   content varchar2(80),
   PRIMARY KEY (mid),
-  FOREIGN KEY (mid) references Catalog_item(catid) 
-  ON DELETE CASCADE );
+  FOREIGN KEY (mid) references Catalog_item(catid) ON DELETE CASCADE );
 
 CREATE TABLE Book (
   bid varchar2(10),
@@ -79,23 +77,21 @@ CREATE TABLE Book (
   edition number,
   content varchar2(80),
   PRIMARY KEY (bid),
-  FOREIGN KEY (bid) references Catalog_item(catid) 
-  ON DELETE CASCADE );
+  FOREIGN KEY (bid) references Catalog_item(catid) ON DELETE CASCADE );
 
 CREATE TABLE Conference_proceedings (
   cid varchar2(10),
   cptitle varchar2(150),
   content varchar2(80),
   PRIMARY KEY (cid),
-  FOREIGN KEY (cid) references Catalog_item(catid)
-  ON DELETE CASCADE );
+  FOREIGN KEY (cid) references Catalog_item(catid) ON DELETE CASCADE );
 
 
 CREATE TABLE Reference (
   catid varchar2(10),
   cite_id varchar2(10),
   PRIMARY KEY (catid, cite_id),
-  FOREIGN KEY (catid) references Catalog_item );
+  FOREIGN KEY (catid) references Catalog_item ON DELETE CASCADE );
 
 CREATE TABLE Creates (
   vid  number,
@@ -111,7 +107,7 @@ CREATE TABLE Search (
   catid varchar2(10),
   PRIMARY KEY (vid, catid),
   FOREIGN KEY (vid) references Viewer,
-  FOREIGN KEY (catid) references Catalog_item );
+  FOREIGN KEY (catid) references Catalog_item ON DELETE CASCADE );
 
 CREATE TABLE Retrieve (
   pid number,
@@ -119,29 +115,31 @@ CREATE TABLE Retrieve (
   r_date date,
   PRIMARY KEY (pid, catid, r_date),
   FOREIGN KEY (pid) references Users,
-  FOREIGN KEY (catid) references Catalog_item );
+  FOREIGN KEY (catid) references Catalog_item ON DELETE CASCADE );
 
 CREATE TABLE Writes (
   catid varchar2(10) NOT NULL,
   pid number NOT NULL,
   PRIMARY KEY (catid, pid),
-  FOREIGN KEY (catid) references Catalog_item,
+  FOREIGN KEY (catid) references Catalog_item ON DELETE CASCADE,
   FOREIGN KEY (pid) references Author );
 
 CREATE TABLE Edits (
   catid varchar2(10) NOT NULL,
   pid number NOT NULL,
   PRIMARY KEY (catid, pid),
-  FOREIGN KEY (catid) references Catalog_item,
+  FOREIGN KEY (catid) references Catalog_item ON DELETE CASCADE,
   FOREIGN KEY (pid) references Editor );
+
 
 CREATE TABLE Publishes (
   catid varchar2(10) NOT NULL,
   pcid number NOT NULL,
   publish_date date,
   PRIMARY KEY (catid, pcid),
-  FOREIGN KEY (catid) references Catalog_item,
+  FOREIGN KEY (catid) references Catalog_item ON DELETE CASCADE,
   FOREIGN KEY (pcid) references Publishing_Company );
+
 
 CREATE TABLE Located_at (
   pcid number NOT NULL,
