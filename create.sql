@@ -52,6 +52,7 @@ CREATE TABLE Viewer (
 CREATE TABLE Catalog_item (
   catid varchar2(10),
   contract_term date,
+  type varchar2(25),
   PRIMARY KEY (catid)
 );
 
