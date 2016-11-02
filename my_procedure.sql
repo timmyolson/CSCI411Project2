@@ -19,7 +19,7 @@ BEGIN
     END IF;
 END;
 
---display what author wrote
+--display what author wrote --doesnnt work, says procedure created while running nothing happens
 create or replace PROCEDURE  Author_writes(
     Nam_e IN Person_p2.pname%TYPE
   )
@@ -49,7 +49,7 @@ BEGIN
 
 END Author_writes;
 
---2nd version which freezes up
+--2nd version which freezes up in cursor
 create or replace PROCEDURE  Author_writes(x in varchar2) as catalog_item_p2 char(10);
 
 cursor cur is
@@ -77,7 +77,7 @@ from person_p2 p, book_p2 b,author_p2 a,journal_p2 j, magazine_p2 m, conference_
   CLOSE cur;
 END Author_writes;
 
---check expiration and display the catid and title overflow
+--check expiration and display the catid and title... data overflow and repeat
 --COL contract_term FORMAT A15
 create or replace PROCEDURE EXPIRE_DATE 
 
