@@ -157,8 +157,8 @@ INSERT INTO Subscription (sid,slen,begin_date,fee) VALUES ('LAY62ERU4CX',12,'23-
 INSERT INTO Subscription (sid,slen,begin_date,fee) VALUES ('MRN33QSD9ZS',3,'10-Jun-10','$900');
 INSERT INTO Subscription (sid,slen,begin_date,fee) VALUES ('AYG49JID9QS',2,'24-May-24','$900');
 INSERT INTO Subscription (sid,slen,begin_date,fee) VALUES ('ULB07XAU1AJ',8,'21-Jan-21','$700');
-INSERT INTO Subscription (sid,slen,begin_date,fee) VALUES ('DGK38CIH5HH',18,'5-Jan-05','$500');
-INSERT INTO Subscription (sid,slen,begin_date,fee) VALUES ('NNP32LKF4VK',12,'7-Sep-07','$700');
+INSERT INTO Subscription (sid,slen,begin_date,fee) VALUES ('DGK38CIH5HH',18,'05-Jan-05','$500');
+INSERT INTO Subscription (sid,slen,begin_date,fee) VALUES ('NNP32LKF4VK',12,'07-Sep-07','$700');
 INSERT INTO Subscription (sid,slen,begin_date,fee) VALUES ('QWE93IZB7XI',8,'31-Aug-31','$900');
 INSERT INTO Subscription (sid,slen,begin_date,fee) VALUES ('ALC68UVE0WM',12,'27-Oct-27','$700');
 
