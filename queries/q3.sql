@@ -36,3 +36,23 @@ SELECT * FROM (
    ORDER BY COUNT(EXTRACT(year FROM P.publish_date)) DESC
 )
 WHERE ROWNUM = 1;
+
+
+--    PUBLISH        NUM TYPE
+-- ---------- ---------- -------------------------
+--       1994          3 Book
+
+
+--    PUBLISH        NUM TYPE
+-- ---------- ---------- -------------------------
+--       2009          1 Journal
+
+
+--    PUBLISH        NUM TYPE
+-- ---------- ---------- -------------------------
+--       2000          2 Magazine
+
+
+--    PUBLISH        NUM TYPE
+-- ---------- ---------- -------------------------
+--       1996          1 Conference_proceedings

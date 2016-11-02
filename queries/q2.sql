@@ -1,5 +1,7 @@
 -- 2) List the title and type of catalog item that were written and edited by the same person.
 
+COL title format a50
+
 SELECT B.btitle as "Title", temp.type
 FROM Book B,
 (
@@ -39,3 +41,24 @@ FROM Conference_proceedings C,
   AND C.catid = W.catid
 ) temp
 WHERE temp.catid = C.cid;
+
+-- Title                                              TYPE
+-- -------------------------------------------------- -------------------------
+-- 10 Studies to Help Shape Your Health               Magazine
+-- A Confederacy of Dunces                            Book
+-- Animal Farm                                        Book
+-- Low-power Depth-based Descending Stair Detection f Journal
+-- or Smart Assistive Devices
+
+-- Moby-Dick                                          Book
+-- Off-Grid Food Preservation                         Magazine
+-- Probabilistic neural networks structure optimizati Conference_proceedings
+-- on through genetic algorithms for recognizing face
+-- s under illumination variations
+
+-- Serum Biochemistry of Lumpy Skin Disease Virus-Inf Journal
+-- ected Cattle
+
+-- The Trial                                          Book
+
+-- 9 rows selected.

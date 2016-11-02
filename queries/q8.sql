@@ -1,5 +1,7 @@
 -- 8) Give the title of the catalog item as well as the author, of the item that has been retrieved the most.
 
+COL title format a50
+
 SELECT B.btitle as "Title", temp.num as "Times Retrieved"
 FROM Book B,
 (
@@ -51,3 +53,9 @@ FROM Conference_proceedings C,
   WHERE ROWNUM = 1
 ) temp
 WHERE temp.catid = C.cid;
+
+
+-- Title                                              Times Retrieved
+-- -------------------------------------------------- ---------------
+-- Iterated mutation in an evolutionary algorithm for               6
+--  Sudoku

@@ -8,3 +8,7 @@ AND A.pcid = P.pcid
 AND A.street = L.street
 AND A.city = L.city
 AND A.state = L.state;
+
+-- CATID      STREET                      CITY            STATE
+-- ---------- --------------------------- --------------- --------------------
+-- YZAQ6317   591-127 Id, Avenue          Dublin          Pennsylvania

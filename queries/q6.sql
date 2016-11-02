@@ -13,3 +13,9 @@ SELECT * FROM (
    ORDER BY (temp.Edits + COUNT(wp.catid)) DESC
 )
 WHERE ROWNUM <= 3;
+
+-- NAME                                EDITS    WRITTEN      TOTAL
+-- ------------------------------ ---------- ---------- ----------
+-- Brandon Horton                          5          5         10
+-- Neil Knowles                            6          0          6
+-- Graiden Wilkins                         4          2          6

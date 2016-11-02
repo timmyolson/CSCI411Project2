@@ -7,3 +7,7 @@ SELECT * FROM (
    ORDER BY COUNT(R.catid) DESC
 )
 WHERE ROWNUM = 1;
+
+-- CATID             NUM
+-- ---------- ----------
+-- NJEQ6977            4

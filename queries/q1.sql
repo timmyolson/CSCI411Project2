@@ -8,3 +8,8 @@ FROM
   WHERE B.bid = C.catid
   AND C.catid = P.catid
 ) temp;
+
+
+-- Oldest Book Newest Book      Range
+-- ----------- ----------- ----------
+--        1968        2014         46
