@@ -35,7 +35,7 @@ BEGIN
       IF id_mag%NOTFOUND THEN
           EXIT;
       END IF;
-      DBMS_OUTPUT.PUT_LINE('-    Magazine:  ' || id);
+      DBMS_OUTPUT.PUT_LINE('-    Magazine:   ' || id);
   END LOOP;
   CLOSE id_mag;
 
@@ -45,7 +45,7 @@ BEGIN
       IF id_jor%NOTFOUND THEN
           EXIT;
       END IF;
-      DBMS_OUTPUT.PUT_LINE('-    Journal:   ' || id);
+      DBMS_OUTPUT.PUT_LINE('-    Journal:    ' || id);
   END LOOP;
   CLOSE id_jor;
 
@@ -55,7 +55,7 @@ BEGIN
       IF id_bok%NOTFOUND THEN
           EXIT;
       END IF;
-      DBMS_OUTPUT.PUT_LINE('-    Book:      ' || id);
+      DBMS_OUTPUT.PUT_LINE('-    Book:       ' || id);
   END LOOP;
   CLOSE id_bok;
 
@@ -113,11 +113,11 @@ EXEC searchCatalog('of');
 --
 -- Search term: [of] running against Catalog Items.
 -- Searching...
--- -    Journal:   YZAQ6317
--- -    Journal:   ZNMF0012
--- -    Journal:   NSYD3340
--- -    Journal:   NPPH3852
--- -    Book:      QEDL4413
+-- -    Journal:    YZAQ6317
+-- -    Journal:    ZNMF0012
+-- -    Journal:    NSYD3340
+-- -    Journal:    NPPH3852
+-- -    Book:       QEDL4413
 -- -    Conference: IXNJ8371
 -- -    Conference: ITCL7144
 -- End of Search!
