@@ -13,7 +13,7 @@ INSERT INTO Person (pid,pname,email) VALUES (121,'Victoria Holder','mollis@Nunc.
 INSERT INTO Person (pid,pname,email) VALUES (122,'Aspen Ayala','dolor.Donec@vitaemaurissit.net');
 INSERT INTO Person (pid,pname,email) VALUES (123,'Melissa Hernandez','laoreet.lectus.quis@non.co.uk');
 INSERT INTO Person (pid,pname,email) VALUES (124,'Bertha Santos','porta.elit@blanditat.org');
-INSERT INTO Person (pid,pname,email) VALUES (125,'Ishmiel Tota','erat.Etiam@mollis.edu');
+INSERT INTO Person (pid,pname,email) VALUES (125,'Barbara Page','erat.Etiam@mollis.edu');
 INSERT INTO Person (pid,pname,email) VALUES (126,'Iliana Peterson','luctus.ipsum@scelerisque.com');
 INSERT INTO Person (pid,pname,email) VALUES (130,'Conan Johns','sagittis.felis@Suspendisseseddolor.edu');
 INSERT INTO Person (pid,pname,email) VALUES (131,'Candice Clemons','nascetur.ridiculus.mus@eueuismod.com');
@@ -170,7 +170,7 @@ INSERT INTO Users (uname,pid) VALUES ('dhamnes',118);
 INSERT INTO Users (uname,pid) VALUES ('jwheeler',120);
 INSERT INTO Users (uname,pid) VALUES ('vholder',121);
 INSERT INTO Users (uname,pid) VALUES ('bsantos',124);
-INSERT INTO Users (uname,pid) VALUES ('itota',125);
+INSERT INTO Users (uname,pid) VALUES ('bpage',125);
 INSERT INTO Users (uname,pid) VALUES ('ipeterson',126);
 INSERT INTO Users (uname,pid) VALUES ('omartinez',141);
 
