@@ -163,16 +163,16 @@ INSERT INTO Subscription (sid,slen,begin_date,fee) VALUES ('QWE93IZB7XI',8,'31-A
 INSERT INTO Subscription (sid,slen,begin_date,fee) VALUES ('ALC68UVE0WM',12,'27-Oct-27','$700');
 
 -- User
-INSERT INTO Users (pid) VALUES (102);
-INSERT INTO Users (pid) VALUES (108);
-INSERT INTO Users (pid) VALUES (117);
-INSERT INTO Users (pid) VALUES (118);
-INSERT INTO Users (pid) VALUES (120);
-INSERT INTO Users (pid) VALUES (121);
-INSERT INTO Users (pid) VALUES (124);
-INSERT INTO Users (pid) VALUES (125);
-INSERT INTO Users (pid) VALUES (126);
-INSERT INTO Users (pid) VALUES (141);
+INSERT INTO Users (uname,pid) VALUES ('graiden.wilkins',102);
+INSERT INTO Users (uname,pid) VALUES ('reese.harper',108);
+INSERT INTO Users (uname,pid) VALUES ('talon.shelton',117);
+INSERT INTO Users (uname,pid) VALUES ('donald.hamnes',118);
+INSERT INTO Users (uname,pid) VALUES ('jacob.wheeler',120);
+INSERT INTO Users (uname,pid) VALUES ('victoria.holder',121);
+INSERT INTO Users (uname,pid) VALUES ('bertha.santos',124);
+INSERT INTO Users (uname,pid) VALUES ('barbara.page',125);
+INSERT INTO Users (uname,pid) VALUES ('iliana.peterson',126);
+INSERT INTO Users (uname,pid) VALUES ('olga.martinez',141);
 
 -- Viewer
 INSERT INTO Viewer (vid) VALUES (200);
@@ -483,3 +483,43 @@ INSERT INTO Creates (vid,pid,sid) VALUES (230,124,'DGK38CIH5HH');
 INSERT INTO Creates (vid,pid,sid) VALUES (235,125,'NNP32LKF4VK');
 INSERT INTO Creates (vid,pid,sid) VALUES (240,126,'QWE93IZB7XI');
 INSERT INTO Creates (vid,pid,sid) VALUES (245,141,'ALC68UVE0WM');
+
+-- Retrieves
+INSERT INTO Retrieve (pid,catid,r_date) VALUES (120,'KQZJ4175','14-DEC-2002');
+INSERT INTO Retrieve (pid,catid,r_date) VALUES (108,'YZAQ6317','13-FEB-1994');
+INSERT INTO Retrieve (pid,catid,r_date) VALUES (102,'BKGN1857','12-JAN-2000');
+INSERT INTO Retrieve (pid,catid,r_date) VALUES (120,'KQZJ4175','30-JAN-1992');
+INSERT INTO Retrieve (pid,catid,r_date) VALUES (121,'UENO6668','12-JAN-2000');
+INSERT INTO Retrieve (pid,catid,r_date) VALUES (102,'ABIQ2755','09-JUN-2014');
+INSERT INTO Retrieve (pid,catid,r_date) VALUES (124,'YZAQ6317','17-FEB-1982');
+INSERT INTO Retrieve (pid,catid,r_date) VALUES (108,'NPPH3852','09-JUN-2014');
+INSERT INTO Retrieve (pid,catid,r_date) VALUES (141,'KQZJ4175','18-DEC-1994');
+INSERT INTO Retrieve (pid,catid,r_date) VALUES (141,'KQZJ4175','26-FEB-2000');
+INSERT INTO Retrieve (pid,catid,r_date) VALUES (118,'VDNT9283','28-FEB-1990');
+INSERT INTO Retrieve (pid,catid,r_date) VALUES (102,'RHBY3015','30-JUL-1994');
+INSERT INTO Retrieve (pid,catid,r_date) VALUES (117,'YZAQ6317','14-DEC-2002');
+INSERT INTO Retrieve (pid,catid,r_date) VALUES (108,'KQZJ4175','27-JUL-1968');
+INSERT INTO Retrieve (pid,catid,r_date) VALUES (118,'NSYD3340','18-DEC-1994');
+INSERT INTO Retrieve (pid,catid,r_date) VALUES (102,'HPNL1208','28-FEB-1990');
+INSERT INTO Retrieve (pid,catid,r_date) VALUES (118,'KQZJ4175','09-JUN-2014');
+INSERT INTO Retrieve (pid,catid,r_date) VALUES (117,'RHBY3015','23-FEB-1980');
+INSERT INTO Retrieve (pid,catid,r_date) VALUES (108,'HPNL1208','30-JAN-1992');
+
+-- Search
+INSERT INTO Search (vid,catid) VALUES (255,'LHHD8542');
+INSERT INTO Search (vid,catid) VALUES (230,'RHBY3015');
+INSERT INTO Search (vid,catid) VALUES (230,'IXNJ8371');
+INSERT INTO Search (vid,catid) VALUES (200,'BKGN1857');
+INSERT INTO Search (vid,catid) VALUES (270,'LHHD8542');
+INSERT INTO Search (vid,catid) VALUES (205,'NPPH3852');
+INSERT INTO Search (vid,catid) VALUES (235,'RHBY3015');
+INSERT INTO Search (vid,catid) VALUES (215,'SQXZ1306');
+INSERT INTO Search (vid,catid) VALUES (300,'RHBY3015');
+INSERT INTO Search (vid,catid) VALUES (280,'LHHD8542');
+INSERT INTO Search (vid,catid) VALUES (285,'LHHD8542');
+INSERT INTO Search (vid,catid) VALUES (270,'HPNL1208');
+INSERT INTO Search (vid,catid) VALUES (265,'HPNL1208');
+INSERT INTO Search (vid,catid) VALUES (270,'IXUU3646');
+INSERT INTO Search (vid,catid) VALUES (300,'ITCL7144');
+INSERT INTO Search (vid,catid) VALUES (285,'VDNT9283');
+INSERT INTO Search (vid,catid) VALUES (265,'NSYD3340');
