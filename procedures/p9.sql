@@ -35,7 +35,7 @@ WHERE U.pid = C.pid AND
 
 -- Output:
 -- SQL> @p9
--- 
+--
 -- UNAME        BEGIN_DATE      SLEN
 -- ------------ --------------- ----
 -- gwilkins     19-NOV-19         12
@@ -48,31 +48,31 @@ WHERE U.pid = C.pid AND
 -- bpage        07-SEP-07         12
 -- ipeterson    31-AUG-31          8
 -- omartinez    27-OCT-27         12
--- 
+--
 -- 10 rows selected.
--- 
--- 
+--
+--
 -- Procedure created.
--- 
--- 
+--
+--
 -- PL/SQL procedure successfully completed.
--- 
--- 
+--
+--
 -- PL/SQL procedure successfully completed.
--- 
--- 
+--
+--
 -- PL/SQL procedure successfully completed.
--- 
--- 
+--
+--
 -- PL/SQL procedure successfully completed.
--- 
--- 
+--
+--
 -- PL/SQL procedure successfully completed.
--- 
--- 
+--
+--
 -- PL/SQL procedure successfully completed.
--- 
--- 
+--
+--
 -- UNAME        BEGIN_DATE      SLEN
 -- ------------ --------------- ----
 -- gwilkins     19-NOV-20         12
@@ -85,7 +85,15 @@ WHERE U.pid = C.pid AND
 -- bpage        07-SEP-07         12
 -- ipeterson    31-AUG-31          8
 -- omartinez    27-OCT-28          6
--- 
+--
 -- 10 rows selected.
--- 
+--
 -- SQL>
+
+-- Justification:
+-- To update a user's subscription we need to conform to our standard of using a
+-- start time attribute and months of subscription purchased. Using Oracle's
+-- ADD_MONTHS function we can make use of our schema for updating times. We use an
+-- UPDATE statement and set the 'new' begin date to the old subscription date with
+-- the duration added. We then assign the new months purchased to the slen. This
+-- procedure is very expendable and robust.
