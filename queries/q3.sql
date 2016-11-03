@@ -8,7 +8,8 @@ SELECT * FROM (
    GROUP BY (EXTRACT(year FROM P.publish_date), C.type)
    ORDER BY COUNT(EXTRACT(year FROM P.publish_date)) DESC
 )
-WHERE ROWNUM = 1;
+WHERE ROWNUM = 1
+UNION
 SELECT * FROM (
    SELECT EXTRACT(year FROM P.publish_date) as publish, COUNT(EXTRACT(year FROM P.publish_date)) as num, C.type
    FROM Journal J, Publishes P, Catalog_item C
@@ -17,7 +18,8 @@ SELECT * FROM (
    GROUP BY (EXTRACT(year FROM P.publish_date), C.type)
    ORDER BY COUNT(EXTRACT(year FROM P.publish_date)) DESC
 )
-WHERE ROWNUM = 1;
+WHERE ROWNUM = 1
+UNION
 SELECT * FROM (
    SELECT EXTRACT(year FROM P.publish_date) as publish, COUNT(EXTRACT(year FROM P.publish_date)) as num, C.type
    FROM Magazine M, Publishes P, Catalog_item C
@@ -26,7 +28,8 @@ SELECT * FROM (
    GROUP BY (EXTRACT(year FROM P.publish_date), C.type)
    ORDER BY COUNT(EXTRACT(year FROM P.publish_date)) DESC
 )
-WHERE ROWNUM = 1;
+WHERE ROWNUM = 1
+UNION
 SELECT * FROM (
    SELECT EXTRACT(year FROM P.publish_date) as publish, COUNT(EXTRACT(year FROM P.publish_date)) as num, C.type
    FROM Conference_proceedings C, Publishes P, Catalog_item C
@@ -41,18 +44,14 @@ WHERE ROWNUM = 1;
 --    PUBLISH        NUM TYPE
 -- ---------- ---------- -------------------------
 --       1994          3 Book
-
-
---    PUBLISH        NUM TYPE
--- ---------- ---------- -------------------------
+--       1996          1 Conference_proceedings
+--       2000          2 Magazine
 --       2009          1 Journal
 
 
---    PUBLISH        NUM TYPE
--- ---------- ---------- -------------------------
---       2000          2 Magazine
-
-
---    PUBLISH        NUM TYPE
--- ---------- ---------- -------------------------
---       1996          1 Conference_proceedings
+-- Justification:
+-- In order to get the largest number of publications for a catalog item in a given year
+-- the year is first extracted from the date of the publications. Then catalog item is 
+-- grouped according to the year. Then it is ordered by the count of the publications that 
+-- share a similar year. This is done for all four types of catalog items. The results
+-- are UNION'ed because there will be one result from each sub-query.

@@ -61,4 +61,9 @@ WHERE temp.catid = C.cid;
 
 -- The Trial                                          Book
 
--- 9 rows selected.
+
+-- Justification
+-- The query starts by finding the catalog item that has been written and edited by the 
+-- same person. It has to do this for each of the types of catalog item. Then
+-- the title and type of that catalog item is passed up the query, where all of the
+-- catalog items are then grouped together.

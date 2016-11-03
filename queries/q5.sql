@@ -15,3 +15,7 @@ AND P1.publish_date = P2.publish_date;
 --         2002 Water the Epic Struggle for Wealth, Power, and Civ Off-Grid Food Preservation
 --              ilization
 
+
+-- Justification:
+-- First, Journal and Magazine catalog types are selected. Then those which have the same date
+-- are selected, producing ones that where published in the same year.

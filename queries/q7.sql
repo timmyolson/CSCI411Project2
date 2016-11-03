@@ -11,3 +11,9 @@ WHERE ROWNUM = 1;
 -- CATID             NUM
 -- ---------- ----------
 -- NJEQ6977            4
+
+
+-- Justification:
+-- The catalog items in the referenced table are grouped by catid. 
+-- Then all we have to do is order by the count of catid and report the
+-- top row.

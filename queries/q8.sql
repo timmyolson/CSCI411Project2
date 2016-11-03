@@ -59,3 +59,10 @@ WHERE temp.catid = C.cid;
 -- -------------------------------------------------- ---------------
 -- Iterated mutation in an evolutionary algorithm for               6
 --  Sudoku
+
+
+-- Justification:
+-- Each of the types of catalog items need to be queried individually to determine the
+-- type that was retrieved the most. To do so, the retrievals are grouped by catid
+-- and then taken a count of. The results are then selected and the one with the most number
+-- of retrievals is reported.

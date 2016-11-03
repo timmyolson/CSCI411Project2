@@ -13,3 +13,8 @@ FROM
 -- Oldest Book Newest Book      Range
 -- ----------- ----------- ----------
 --        1968        2014         46
+
+-- Justification: 
+-- Books are selected by equijoining bid with catid. In order to get the range of ages of books, 
+-- the oldest book is selected and then the newest one. The year published is extracted from
+-- the dates and then subtracted to find the range.
