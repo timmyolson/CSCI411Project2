@@ -4,22 +4,25 @@ SET SERVEROUTPUT ON
 
 CREATE OR REPLACE PROCEDURE r (user_id IN char, search_title IN char) AS
 
+item_title varchar2(100);
 item_found varchar2(10);
-content varchar2(100);
+content varchar2(200);
 user_found int;
-CURSOR m_id IS SELECT M.mid, M.content
+view_num int;
+u_id int;
+CURSOR m_id IS SELECT M.mtitle, M.mid, M.content
                FROM Magazine M
                WHERE M.mtitle = search_title;
 
-CURSOR j_id IS SELECT J.jid, J.content
+CURSOR j_id IS SELECT J.jtitle, J.jid, J.content
                FROM Journal J
                WHERE J.jtitle = search_title;
 
-CURSOR b_id IS SELECT B.bid, B.content
+CURSOR b_id IS SELECT B.btitle, B.bid, B.content
                FROM Book B
                WHERE B.btitle = search_title;
 
-CURSOR c_id IS SELECT CP.cid, CP.content
+CURSOR c_id IS SELECT CP.cptitle, CP.cid, CP.content
                FROM Conference_proceedings CP
                WHERE CP.cptitle = search_title;
 
@@ -28,7 +31,7 @@ BEGIN
   DBMS_OUTPUT.PUT_LINE('Searching...');
   OPEN m_id;
   LOOP
-      FETCH m_id INTO item_found, content;
+      FETCH m_id INTO item_title, item_found, content;
       IF m_id%NOTFOUND THEN
           EXIT;
       END IF;
@@ -37,7 +40,7 @@ BEGIN
 
   OPEN j_id;
   LOOP
-      FETCH j_id INTO item_found, content;
+      FETCH j_id INTO item_title, item_found, content;
       IF j_id%NOTFOUND THEN
           EXIT;
       END IF;
@@ -46,7 +49,7 @@ BEGIN
 
   OPEN b_id;
   LOOP
-      FETCH b_id INTO item_found, content;
+      FETCH b_id INTO item_title, item_found, content;
       IF b_id%NOTFOUND THEN
           EXIT;
       END IF;
@@ -55,7 +58,7 @@ BEGIN
 
   OPEN c_id;
   LOOP
-      FETCH c_id INTO item_found, content;
+      FETCH c_id INTO item_title, item_found, content;
       IF c_id%NOTFOUND THEN
           EXIT;
       END IF;
@@ -63,24 +66,29 @@ BEGIN
   CLOSE c_id;
 
   SELECT COUNT(U.uname) INTO user_found FROM Users U WHERE U.uname = user_id;
+  SELECT U.pid INTO u_id FROM Users U WHERE U.uname = user_id;
+
 
   IF user_found = 0 THEN
-      DBMS_OUTPUT.PUT_LINE('Viewer');
+      DBMS_OUTPUT.PUT_LINE(user_id || ' is not a validated User');
+      DBMS_OUTPUT.PUT_LINE('Found ' || item_found || '!');
+      DBMS_OUTPUT.PUT_LINE('No content will be displayed');
+
+      SELECT vid INTO view_num FROM (SELECT vid FROM Viewer ORDER BY vid DESC) WHERE ROWNUM = 1;
+      INSERT INTO Viewer (vid) VALUES (view_num+5);
+      INSERT INTO Search (vid,catid) VALUES (view_num+5,item_found);
+      COMMIT;
   ELSE
-      DBMS_OUTPUT.PUT_LINE('User');
+
+      DBMS_OUTPUT.PUT_LINE('User ' || user_id || ' validated');
+      DBMS_OUTPUT.PUT_LINE('Found ' || item_found || '!');
+      DBMS_OUTPUT.PUT_LINE('Displaying content:');
+      DBMS_OUTPUT.PUT_LINE(content);
+
+      INSERT INTO Retrieve (pid,catid,r_date) VALUES (u_id,item_found,to_char(sysdate, 'dd-mon-yyyy'));
+      COMMIT;
   END IF;
 
-
-  -- OPEN u_id;
-  -- LOOP
-  --     IF u_id%NOTFOUND THEN
-  --         EXIT;
-  --     END IF;
-  --     DBMS_OUTPUT.PUT_LINE('Found ' || search_title || '!');
-  --     DBMS_OUTPUT.PUT_LINE('Displaying content:');
-  --     DBMS_OUTPUT.PUT_LINE(item_content);
-  -- END LOOP;
-  -- CLOSE u_id;
   DBMS_OUTPUT.PUT_LINE('End of Search!');
 END;
 /
