@@ -1,4 +1,4 @@
--- 1) Find the sids and unames of people who's subscriptions expires within 30 days. - Tim
+-- 1) Find the username, email, and name of user's whose subscription has expired.
 
 SET SERVEROUTPUT ON
 COL sid FORMAT A15
@@ -60,5 +60,13 @@ EXEC emailExpiredUsers();
 -- End of oudated Subscriptions!
 --
 -- PL/SQL procedure successfully completed.
--- 
+--
 -- SQL>
+
+-- Justification:
+-- To contact users about extending their subscriptions we need to have an email address,
+-- a name; to personalize the email, and a username; to remind the user of their credentials.
+-- Users to contact are users which have expired subscriptions. These are found with Oracle's
+-- ADD_MONTHS function which determines the subscription end date by adding the subscription
+-- duration to the subscription start date. We fetch all tuples where the the end date is
+-- less than the current system date (Oracle SYSDATE).

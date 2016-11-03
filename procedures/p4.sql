@@ -1,4 +1,4 @@
--- 4) Search catalog items - Tim
+-- 4) Search through catalog items given a search term. - Tim
 
 SET SERVEROUTPUT ON
 COL mid FORMAT A8
@@ -125,3 +125,11 @@ EXEC searchCatalog('of');
 -- PL/SQL procedure successfully completed.
 --
 -- SQL>
+
+-- Justification:
+-- If a particular catalog user desires to search for a catalog ID given a search
+-- string. These search strings are compared to titles, and the ID is returned.
+-- Searching is done with use of the LIKE operator and the modulus (%) string operator
+-- that allows for partial matching in a LIKE clause. Encapsulating the search string
+-- within two moduli, is the principle operation in the procedure which allows partial
+-- matches.

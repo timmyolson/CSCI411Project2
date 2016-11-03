@@ -74,3 +74,10 @@ WHERE P.pid = 120 OR
 --  125 Barbara Page         turningAnotherPage@yahoo.com
 --
 -- SQL>
+
+-- Justification:
+-- This procedure changes a value in the Person table, email. It takes in a username
+-- from the Users table. We SELECT the user's pid that joins to a pid in person,
+-- which is where emails are located. From this point we know that we have identified
+-- a user's email based on their username, after that an UPDATE statement changes the
+-- email.
