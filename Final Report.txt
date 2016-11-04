@@ -16,31 +16,31 @@ Table Create
      email varchar2(50) default NULL,
      PRIMARY KEY (pid)
    );
-   
+
    CREATE TABLE Author (
      pid number NOT NULL references person(pid),
      PRIMARY KEY (pid)
    );
-   
+
    CREATE TABLE Editor (
      pid number NOT NULL references person(pid),
      PRIMARY KEY (pid)
    );
-   
+
    CREATE TABLE Publishing_Company (
      pcid number default NULL,
      pcname varchar2(80) default NULL,
      phone varchar2(20) default NULL,
      PRIMARY KEY (pcid)
    );
-   
+
    CREATE TABLE Address (
      street varchar2(50) NOT NULL,
      city varchar2(30) NOT NULL,
      state varchar2(20) NOT NULL,
      PRIMARY KEY (street, city, state)
    );
-   
+
    CREATE TABLE Subscription (
      sid varchar2(11),
      slen number,
@@ -48,25 +48,25 @@ Table Create
      fee varchar2(10) default NULL,
      PRIMARY KEY (sid)
    );
-   
+
    CREATE TABLE Users (
      pid number NOT NULL references person(pid),
      uname varchar2(30),
      PRIMARY KEY (pid)
    );
-   
+
    CREATE TABLE Viewer (
      vid number default NULL,
      PRIMARY KEY (vid)
    );
-   
+
    CREATE TABLE Catalog_item (
      catid varchar2(10),
      contract_term date,
      type varchar2(25),
      PRIMARY KEY (catid)
    );
-   
+
    CREATE TABLE Journal (
      jid varchar2(10),
      jtitle varchar2(80),
@@ -74,7 +74,7 @@ Table Create
      content varchar2(80),
      PRIMARY KEY (jid),
      FOREIGN KEY (jid) references Catalog_item(catid) ON DELETE CASCADE );
-   
+
    CREATE TABLE Magazine (
      mid varchar2(10),
      mtitle varchar2(80),
@@ -82,7 +82,7 @@ Table Create
      content varchar2(80),
      PRIMARY KEY (mid),
      FOREIGN KEY (mid) references Catalog_item(catid) ON DELETE CASCADE );
-   
+
    CREATE TABLE Book (
      bid varchar2(10),
      btitle varchar2(80),
@@ -90,21 +90,21 @@ Table Create
      content varchar2(80),
      PRIMARY KEY (bid),
      FOREIGN KEY (bid) references Catalog_item(catid) ON DELETE CASCADE );
-   
+
    CREATE TABLE Conference_proceedings (
      cid varchar2(10),
      cptitle varchar2(150),
      content varchar2(80),
      PRIMARY KEY (cid),
      FOREIGN KEY (cid) references Catalog_item(catid) ON DELETE CASCADE );
-   
-   
+
+
    CREATE TABLE Reference (
      catid varchar2(10),
      cite_id varchar2(10),
      PRIMARY KEY (catid, cite_id),
      FOREIGN KEY (catid) references Catalog_item ON DELETE CASCADE );
-   
+
    CREATE TABLE Creates (
      vid  number,
      pid  number,
@@ -113,14 +113,14 @@ Table Create
      FOREIGN KEY (vid) references Viewer,
      FOREIGN KEY (sid) references Subscription,
      FOREIGN KEY (pid) references Users );
-   
+
    CREATE TABLE Search (
      vid number NOT NULL,
      catid varchar2(10),
      PRIMARY KEY (vid, catid),
      FOREIGN KEY (vid) references Viewer,
      FOREIGN KEY (catid) references Catalog_item ON DELETE CASCADE );
-   
+
    CREATE TABLE Retrieve (
      pid number,
      catid varchar2(10),
@@ -128,22 +128,22 @@ Table Create
      PRIMARY KEY (pid, catid, r_date),
      FOREIGN KEY (pid) references Users,
      FOREIGN KEY (catid) references Catalog_item ON DELETE CASCADE );
-   
+
    CREATE TABLE Writes (
      catid varchar2(10) NOT NULL,
      pid number NOT NULL,
      PRIMARY KEY (catid, pid),
      FOREIGN KEY (catid) references Catalog_item ON DELETE CASCADE,
      FOREIGN KEY (pid) references Author );
-   
+
    CREATE TABLE Edits (
      catid varchar2(10) NOT NULL,
      pid number NOT NULL,
      PRIMARY KEY (catid, pid),
      FOREIGN KEY (catid) references Catalog_item ON DELETE CASCADE,
      FOREIGN KEY (pid) references Editor );
-   
-   
+
+
    CREATE TABLE Publishes (
      catid varchar2(10) NOT NULL,
      pcid number NOT NULL,
@@ -151,8 +151,8 @@ Table Create
      PRIMARY KEY (catid, pcid),
      FOREIGN KEY (catid) references Catalog_item ON DELETE CASCADE,
      FOREIGN KEY (pcid) references Publishing_Company );
-   
-   
+
+
    CREATE TABLE Located_at (
      pcid number NOT NULL,
      street varchar2(50) NOT NULL,
@@ -161,7 +161,7 @@ Table Create
      PRIMARY KEY (pcid, street, city, state),
      FOREIGN KEY (pcid) references Publishing_Company,
      FOREIGN KEY (street, city, state) references Address );
-   
+
    CREATE TABLE Lives_At (
      pid number NOT NULL,
      street varchar2(50) NOT NULL,
@@ -207,7 +207,7 @@ Insertion of Data
       153,'Alexa Thomas','Proin.nisl@adlitora.net'
 
    Author
-   INSERT INTO Author (pid) -> 
+   INSERT INTO Author (pid) ->
       102
       103
       117
@@ -232,7 +232,7 @@ Insertion of Data
       153
 
    Editor
-   INSERT INTO Editor (pid) -> 
+   INSERT INTO Editor (pid) ->
       102
       103
       106
@@ -277,7 +277,7 @@ Insertion of Data
       15587,'28th Chinese Control and Decision Conference','(908) 217-1888'
 
    Address
-   INSERT INTO Address (street,city,state) ->  
+   INSERT INTO Address (street,city,state) ->
       '723 Imperdiet, St.','Dublin','Pennsylvania'
       'Ap #426-3290 Arcu. Road','Arquata del Tronto','Minnesota'
       'Ap #983-1695 Sagittis. St.','Orai','Minnesota'
@@ -345,7 +345,7 @@ Insertion of Data
       'ALC68UVE0WM',12,'27-Oct-2027','$700'
 
    User
-   INSERT INTO Users (uname,pid) -> 
+   INSERT INTO Users (uname,pid) ->
       'gwilkins',102
       'rharper',108
       'tshelton',117
@@ -464,13 +464,13 @@ Insertion of Data
    Conference_proceedings
    INSERT INTO Conference_proceedings (cid,cptitle,content) ->
       'KQZJ4175','Iterated mutation in an evolutionary algorithm for Sudoku','The content of proceeding: Iterated mutation...'
-      'VXWY8161','Probabilistic neural networks structure optimization through genetic algorithms for recognizing 
+      'VXWY8161','Probabilistic neural networks structure optimization through genetic algorithms for recognizing
          faces under illumination variations','The content of proceeding: Probabilistic neural...'
-      'BKGN1857','Wind Power Plant Prediction by Using Neural Networks','The content of proceeding: Wind Power Plant 
+      'BKGN1857','Wind Power Plant Prediction by Using Neural Networks','The content of proceeding: Wind Power Plant
          Prediction...'
-      'IXNJ8371','CFD analysis of pre-cooling water spray system in natural draft dry cooling towers','The content of 
+      'IXNJ8371','CFD analysis of pre-cooling water spray system in natural draft dry cooling towers','The content of
          proceeding: CFD analysis of pre-cooling...'
-      'ITCL7144','Host computer software design of MAA hydrolysis reaction based on WINCC configuration software','The content 
+      'ITCL7144','Host computer software design of MAA hydrolysis reaction based on WINCC configuration software','The content
          of proceeding: Host computer software...'
 
    Publishes
@@ -740,21 +740,21 @@ Basic Interactions
 1) What is the range (in years) of the age of books in the library.
 
    SELECT temp.old as "Oldest Book", temp.new as "Newest Book", temp.new - temp.old as "Range"
-   FROM 
+   FROM
    (
      SELECT MIN(EXTRACT(year FROM P.publish_date)) as old, MAX(EXTRACT(year FROM P.publish_date)) as new
      FROM Book B, Catalog_item C, Publishes P
      WHERE B.bid = C.catid
      AND C.catid = P.catid
    ) temp;
-   
-   
+
+
    Oldest Book Newest Book      Range
    ----------- ----------- ----------
           1968        2014         46
-   
-   Justification: 
-   Books are selected by equijoining bid with catid. In order to get the range of ages of books, 
+
+   Justification:
+   Books are selected by equijoining bid with catid. In order to get the range of ages of books,
    the oldest book is selected and then the newest one. The year published is extracted from
    the dates and then subtracted to find the range.
 
@@ -762,7 +762,7 @@ Basic Interactions
 2) List the title and type of catalog item that were written and edited by the same person.
 
    COL title format a50
-   
+
    SELECT B.btitle as "Title", temp.type
    FROM Book B,
    (
@@ -802,7 +802,7 @@ Basic Interactions
      AND C.catid = W.catid
    ) temp
    WHERE temp.catid = C.cid;
-   
+
    Title                                              TYPE
    -------------------------------------------------- -------------------------
    10 Studies to Help Shape Your Health               Magazine
@@ -810,26 +810,26 @@ Basic Interactions
    Animal Farm                                        Book
    Low-power Depth-based Descending Stair Detection f Journal
    or Smart Assistive Devices
-   
+
    Moby-Dick                                          Book
    Off-Grid Food Preservation                         Magazine
    Probabilistic neural networks structure optimizati Conference_proceedings
    on through genetic algorithms for recognizing face
    s under illumination variations
-   
+
    Serum Biochemistry of Lumpy Skin Disease Virus-Inf Journal
    ected Cattle
-   
+
    The Trial                                          Book
-   
+
    Justification
-   The query starts by finding the catalog item that has been written and edited by the 
+   The query starts by finding the catalog item that has been written and edited by the
    same person. It has to do this for each of the types of catalog item. Then
    the title and type of that catalog item is passed up the query, where all of the
    catalog items are then grouped together.
 
 
-3) Give the year and number of publications for each type of catalog item, that had the highest number of 
+3) Give the year and number of publications for each type of catalog item, that had the highest number of
    publications for that catalog item.
 
    SELECT * FROM (
@@ -871,23 +871,23 @@ Basic Interactions
       ORDER BY COUNT(EXTRACT(year FROM P.publish_date)) DESC
    )
    WHERE ROWNUM = 1;
-   
+
       PUBLISH        NUM TYPE
    ---------- ---------- -------------------------
          1994          3 Book
          1996          1 Conference_proceedings
          2000          2 Magazine
          2009          1 Journal
-   
+
    Justification:
    In order to get the largest number of publications for a catalog item in a given year
-   the year is first extracted from the date of the publications. Then catalog item is 
-   grouped according to the year. Then it is ordered by the count of the publications that 
+   the year is first extracted from the date of the publications. Then catalog item is
+   grouped according to the year. Then it is ordered by the count of the publications that
    share a similar year. This is done for all four types of catalog items. The results
    are UNION'ed because there will be one result from each sub-query.
 
 
-4) List the names and full addresses of people who live at the same location as a publishing company, 
+4) List the names and full addresses of people who live at the same location as a publishing company,
    as well as the name of the company located at that address.
 
    SELECT P.pname as person, L.street, L.city, L.state, C.pcname as "Publish Company"
@@ -897,17 +897,17 @@ Basic Interactions
    AND L.street = A.street
    AND L.city = A.city
    AND L.state = A.state;
-   
+
    PERSON              STREET                      CITY                     STATE            PUBLISH COMPANY
    ------------------- --------------------------- ------------------------ ---------------- --------------------
    Victoria Holder     243 Lacus. Rd.              Dollard-des-Ormeaux      Quebec           GeoArabia
    Reese Harper        591-127 Id, Avenue          Dublin                   Pennsylvania     African Zoology
    Candice Clemons     823-6082 Aliquet Street     M??nster                 Nebraska         Ancient Philosophy
    Bertha Santos       823-6082 Aliquet Street     M??nster                 Nebraska         Ancient Philosophy
-   
+
    Justification:
    Starting with person, we have to associate each one with their address. Then the same thing
-   is done to find the location of each publishing company. Finally, the full addresses 
+   is done to find the location of each publishing company. Finally, the full addresses
    (street, city and state) are compared and matches are selected.
 
 
@@ -915,19 +915,19 @@ Basic Interactions
 
    COL Journal format a50
    COL Magazine format a50
-   
+
    SELECT DISTINCT EXTRACT(year FROM P1.publish_date) as "Publish year", J.jtitle as Journal, M.mtitle as Magazine
    FROM Catalog_item C, Publishes P1, Publishes P2, Journal J, Magazine M
    WHERE P1.catid = J.jid
    AND P2.catid = M.mid
    AND P1.publish_date = P2.publish_date;
-   
+
    Publish year JOURNAL                                            MAGAZINE
    ------------ -------------------------------------------------- ----------------------------------------------
            2014 Remarque en toy telle marque                       Canadas History Society Annual Report 2015
            2002 Water the Epic Struggle for Wealth, Power, and Civ Off-Grid Food Preservation
                 ilization
-   
+
    Justification:
    First, Journal and Magazine catalog types are selected. Then those which have the same date
    are selected, producing ones that where published in the same year.
@@ -942,17 +942,17 @@ Basic Interactions
       ORDER BY COUNT(R.catid) DESC
    )
    WHERE ROWNUM = 1;
-   
+
    CATID             NUM
    ---------- ----------
    NJEQ6977            4
-   
+
    Justification:
-   The catalog items in the referenced table are grouped by catid. 
+   The catalog items in the referenced table are grouped by catid.
    Then all we have to do is order by the count of catid and report the
    top row.
 
-9) Give the name and phone number of the publishing company who has published the most 
+9) Give the name and phone number of the publishing company who has published the most
    conference proceedings.
 
    SELECT * FROM (
@@ -964,19 +964,19 @@ Basic Interactions
       ORDER BY COUNT(C.cid) DESC
    )
    WHERE ROWNUM = 1;
-   
+
    PCNAME                                                                           PHONE
    -------------------------------------------------------------------------------- --------------------
    IASTED International Conference on Artificial Intelligence and Applications      (557) 247-1698
-   
-   
+
+
    Justification:
    First, conference proceedings are selected. Then those Publishing Companies who published
-   conference proceedings are selected. These rows are ordered by the number of items 
+   conference proceedings are selected. These rows are ordered by the number of items
    it has published. The top publisher is then reported.
 
 
-10) List catalog items that were published in the same state that a user is from and 
+10) List catalog items that were published in the same state that a user is from and
     has retrieved.
 
    SELECT R.catid, A.street, A.city, A.state
@@ -987,14 +987,14 @@ Basic Interactions
    AND A.street = L.street
    AND A.city = L.city
    AND A.state = L.state;
-   
+
    CATID      STREET                      CITY            STATE
    ---------- --------------------------- --------------- --------------------
    YZAQ6317   591-127 Id, Avenue          Dublin          Pennsylvania
-   
+
    Justification:
    The address of a user is found by joining the pid of the retrieval of the user
-   with the pid of the addresses lived at. Then the publishing company of that catalog 
+   with the pid of the addresses lived at. Then the publishing company of that catalog
    item retreived is selected. Finally, the if the full address matches (street, city,
    and state) the row is a match and is reported.
 
@@ -1002,11 +1002,11 @@ Basic Interactions
 Additional Queries
 --------------------------
 
-1) Give the number of items written, edited, total and the names of the three persons who 
+1) Give the number of items written, edited, total and the names of the three persons who
    have contributed the highest number of catalog items.
 
    SELECT * FROM (
-      SELECT temp.pname as Name, temp.Edits as Edits, COUNT(wp.catid) as Written, 
+      SELECT temp.pname as Name, temp.Edits as Edits, COUNT(wp.catid) as Written,
                                                         (temp.Edits + COUNT(wp.catid)) as Total
       FROM (
          SELECT ep.pname, ep.pid, COUNT(E.catid) as Edits
@@ -1019,13 +1019,13 @@ Additional Queries
       ORDER BY (temp.Edits + COUNT(wp.catid)) DESC
    )
    WHERE ROWNUM <= 3;
-   
+
    NAME                                EDITS    WRITTEN      TOTAL
    ------------------------------ ---------- ---------- ----------
    Brandon Horton                          5          5         10
    Neil Knowles                            6          0          6
    Graiden Wilkins                         4          2          6
-   
+
    Justification:
    In order to get the number of items written and number of items edited by the same person
    a double Left outer join was used. This ensures that even if a person didn't contribute in
@@ -1036,7 +1036,7 @@ Additional Queries
 2) Give the title of the catalog item as well as the author, of the item that has been retrieved the most.
 
    COL title format a50
-   
+
    SELECT B.btitle as "Title", temp.num as "Times Retrieved"
    FROM Book B,
    (
@@ -1088,13 +1088,601 @@ Additional Queries
      WHERE ROWNUM = 1
    ) temp
    WHERE temp.catid = C.cid;
-   
+
    Title                                                      Times Retrieved
    ---------------------------------------------------------- ---------------
    Iterated mutation in an evolutionary algorithm for Sudoku                6
-   
+
    Justification:
    Each of the types of catalog items need to be queried individually to determine the
    type that was retrieved the most. To do so, the retrievals are grouped by catid
    and then taken a count of. The results are then selected and the one with the most number
    of retrievals is reported.
+
+
+Stored Procedures
+--------------------------
+
+1) Find the username, email, and name of user's whose subscription has expired.
+
+   SET SERVEROUTPUT ON
+   COL sid FORMAT A15
+   COL slen FORMAT 999
+   COL begin_date FORMAT A15
+   COL fee FORMAT A10
+
+   CREATE OR REPLACE PROCEDURE emailExpiredUsers
+   AS
+   name VARCHAR(30);
+   username VARCHAR(30);
+   contact VARCHAR(50);
+
+   CURSOR findUsers IS SELECT P.pname, U.uname, P.email
+                       FROM Creates C, Person P, Users U, Subscription S
+                       WHERE C.pid = P.pid AND
+                             U.pid = P.pid AND
+                             C.sid = S.sid AND
+                             ADD_MONTHS(S.begin_date, S.slen) < (SELECT SYSDATE
+                                                                 FROM DUAL);
+   BEGIN
+     DBMS_OUTPUT.PUT_LINE('Searching for users to contact about updating Subscriptions:');
+     OPEN findUsers;
+     LOOP
+       FETCH findUsers INTO name, username, contact;
+       IF findUsers%NOTFOUND THEN
+         EXIT;
+       END IF;
+         DBMS_OUTPUT.PUT_LINE('Contact [' || name || '] details:');
+         DBMS_OUTPUT.PUT_LINE('-   username: ' || username);
+         DBMS_OUTPUT.PUT_LINE('-   email:    ' || contact);
+     END LOOP;
+     CLOSE findUsers;
+     DBMS_OUTPUT.PUT_LINE('End of oudated Subscriptions!');
+   END;
+   /
+
+   EXEC emailExpiredUsers();
+
+   Verify ADD_MONTHS works as expected.
+   SELECT ADD_MONTHS(S.begin_date, S.slen), S.begin_date, S.slen
+   FROM Subscription S;
+
+   Verify ADD_MONTHS works as expected.
+   SELECT ADD_MONTHS(S.begin_date, S.slen), S.begin_date, S.slen
+   FROM Subscription S;
+
+   Output:
+   SQL> @p1
+
+   Procedure created.
+
+   Searching for users to contact about updating Subscriptions:
+   Contact [Donald O. Hamnes] details:
+   -   username: dhamnes
+   -   email:    dohamnes@stcloudstate.edu
+   Contact [Bertha Santos] details:
+   -   username: bsantos
+   -   email:    porta.elit@blanditat.org
+   Contact [Barbara Page] details:
+   -   username: bpage
+   -   email:    erat.Etiam@mollis.edu
+   End of oudated Subscriptions!
+
+   PL/SQL procedure successfully completed.
+
+   SQL>
+
+   Justification:
+   To contact users about extending their subscriptions we need to have an email address,
+   a name; to personalize the email, and a username; to remind the user of their credentials.
+   Users to contact are users which have expired subscriptions. These are found with Oracle's
+   ADD_MONTHS function which determines the subscription end date by adding the subscription
+   duration to the subscription start date. We fetch all tuples where the the end date is
+   less than the current system date (Oracle SYSDATE).
+
+4) Search through catalog items given a search term.
+
+   SET SERVEROUTPUT ON
+   COL mid FORMAT A8
+   COL mtitle FORMAT A50
+   COL jvol FORMAT 99
+   COL content FORMAT A65
+
+   CREATE OR REPLACE PROCEDURE searchCatalog(
+     searchTerm IN char
+   )
+   AS
+   id varchar2(10);
+   CURSOR id_mag IS SELECT M.mid
+                    FROM Magazine M
+                    WHERE M.mtitle LIKE '%' || searchTerm ||'%';
+
+   CURSOR id_jor IS SELECT J.jid
+                    FROM Journal J
+                    WHERE J.jtitle LIKE '%' || searchTerm ||'%';
+
+   CURSOR id_bok IS SELECT B.bid
+                    FROM Book B
+                    WHERE B.btitle LIKE '%' || searchTerm ||'%';
+
+   CURSOR id_con IS SELECT CP.cid
+                    FROM Conference_proceedings CP
+                    WHERE CP.cptitle LIKE '%' || searchTerm ||'%';
+   BEGIN
+     DBMS_OUTPUT.PUT_LINE('Search term: [' || searchTerm || '] running against Catalog Items.');
+     DBMS_OUTPUT.PUT_LINE('Searching...');
+     OPEN id_mag;
+     LOOP
+         FETCH id_mag INTO id;
+         IF id_mag%NOTFOUND THEN
+             EXIT;
+         END IF;
+         DBMS_OUTPUT.PUT_LINE('-    Magazine:   ' || id);
+     END LOOP;
+     CLOSE id_mag;
+
+   OPEN id_jor;
+   LOOP
+       FETCH id_jor INTO id;
+       IF id_jor%NOTFOUND THEN
+           EXIT;
+       END IF;
+       DBMS_OUTPUT.PUT_LINE('-    Journal:    ' || id);
+   END LOOP;
+   CLOSE id_jor;
+
+   OPEN id_bok;
+   LOOP
+       FETCH id_bok INTO id;
+       IF id_bok%NOTFOUND THEN
+           EXIT;
+       END IF;
+       DBMS_OUTPUT.PUT_LINE('-    Book:       ' || id);
+   END LOOP;
+   CLOSE id_bok;
+
+     OPEN id_con;
+     LOOP
+         FETCH id_con INTO id;
+         IF id_con%NOTFOUND THEN
+             EXIT;
+         END IF;
+         DBMS_OUTPUT.PUT_LINE('-    Conference: ' || id);
+     END LOOP;
+     CLOSE id_con;
+     DBMS_OUTPUT.PUT_LINE('End of Search!');
+   END;
+   /
+
+   EXEC searchCatalog('Canada');
+   EXEC searchCatalog('Bitcoin');
+   EXEC searchCatalog('The Trial');
+   EXEC searchCatalog('software');
+   EXEC searchCatalog('of');
+
+   Output:
+   SQL> @p4.sql
+
+   Procedure created.
+
+   Search term: [Canada] running against Catalog Items.
+   Searching...
+   -    Magazine:  RYMF2195
+   End of Search!
+
+   PL/SQL procedure successfully completed.
+
+   Search term: [Bitcoin] running against Catalog Items.
+   Searching...
+   -    Magazine:  HPNL1208
+   End of Search!
+
+   PL/SQL procedure successfully completed.
+
+   Search term: [The Trial] running against Catalog Items.
+   Searching...
+   -    Book:      HZLE2432
+   End of Search!
+
+   PL/SQL procedure successfully completed.
+
+   Search term: [software] running against Catalog Items.
+   Searching...
+   -    Conference: ITCL7144
+   End of Search!
+
+   PL/SQL procedure successfully completed.
+
+   Search term: [of] running against Catalog Items.
+   Searching...
+   -    Journal:    YZAQ6317
+   -    Journal:    ZNMF0012
+   -    Journal:    NSYD3340
+   -    Journal:    NPPH3852
+   -    Book:       QEDL4413
+   -    Conference: IXNJ8371
+   -    Conference: ITCL7144
+   End of Search!
+
+   PL/SQL procedure successfully completed.
+
+   SQL>
+
+   Justification:
+   If a particular catalog user desires to search for a catalog ID given a search
+   string. These search strings are compared to titles, and the ID is returned.
+   Searching is done with use of the LIKE operator and the modulus (%) string operator
+   that allows for partial matching in a LIKE clause. Encapsulating the search string
+   within two moduli, is the principle operation in the procedure which allows partial
+   matches.
+
+6) Allow an author to submit work.
+
+   SET SERVEROUTPUT ON
+
+   CREATE OR REPLACE PROCEDURE addWork(
+     author_pid IN NUMBER,
+     editor_pid IN NUMBER,
+     ref_catid  IN CHAR,
+     pub_pcid   IN NUMBER,
+     new_catid  IN CHAR,
+     pub_type   IN CHAR,
+     new_title  IN CHAR,
+     new_cont   IN CHAR,
+     new_vol    IN CHAR
+   )
+   AS
+   author_flag INT;
+   editor_flag INT;
+   catid_flag  INT;
+   ref_flag    INT;
+   pub_flag    INT;
+   BEGIN
+     SELECT COUNT(A.pid)    INTO author_flag FROM Author A WHERE A.pid = author_pid;
+     SELECT COUNT(E.pid)    INTO editor_flag FROM Editor E WHERE E.pid = editor_pid;
+     SELECT COUNT(C.catid)  INTO ref_flag    FROM Catalog_item C WHERE C.catid = ref_catid;
+     SELECT COUNT(Pub.pcid) INTO pub_flag    FROM Publishing_Company Pub WHERE Pub.pcid = pub_pcid;
+     SELECT COUNT(C.catid)  INTO catid_flag  FROM Catalog_item C WHERE C.catid = new_catid;
+
+     IF (author_flag = 0) THEN
+       DBMS_OUTPUT.PUT_LINE('Invalid Author: ' || author_pid || ' cannot continue!');
+       RETURN;
+     END IF;
+
+     IF (editor_flag = 0) THEN
+       DBMS_OUTPUT.PUT_LINE('Invalid Editor: ' || editor_pid || ' cannot continue!');
+       RETURN;
+     END IF;
+
+     IF (catid_flag = 1) THEN
+       DBMS_OUTPUT.PUT_LINE('New Catalog ID already exists: ' || new_catid || ' cannot continue!');
+       RETURN;
+     END IF;
+
+     IF (ref_flag = 0) THEN
+       DBMS_OUTPUT.PUT_LINE('Invalid Referenceing Catalog ID: ' || ref_catid || ' cannot continue!');
+       RETURN;
+     END IF;
+
+     IF (pub_flag = 0) THEN
+       DBMS_OUTPUT.PUT_LINE('Invalid Publishing Company: ' || pub_pcid || ' cannot continue!');
+       RETURN;
+     END IF;
+
+     INSERT INTO Catalog_item (catid,contract_term,type) VALUES (new_catid,SYSDATE+36500,pub_type);
+     INSERT INTO Writes (catid,pid) VALUES (new_catid,author_pid);
+     INSERT INTO Edits  (catid,pid) VALUES (new_catid,editor_pid);
+     INSERT INTO Publishes (catid,pcid,publish_date) VALUES (new_catid,pub_pcid,SYSDATE);
+     INSERT INTO Reference (catid,cite_id) VALUES (new_catid,ref_catid);
+
+     IF (pub_type = 'Conference_proceedings') THEN
+       INSERT INTO Conference_proceedings VALUES (new_catid,new_title,new_cont);
+     END IF;
+     IF (pub_type = 'Book') THEN
+       INSERT INTO Book VALUES (new_catid,new_title,new_vol,new_cont);
+     END IF;
+     IF (pub_type = 'Magazine') THEN
+       INSERT INTO Magazine VALUES (new_catid,new_title,new_vol,new_cont);
+     END IF;
+     IF (pub_type = 'Journal') THEN
+       INSERT INTO Journal VALUES (new_catid,new_title,new_vol,new_cont);
+     END IF;
+
+     DBMS_OUTPUT.PUT_LINE('The ' || pub_type || ' has been added to the Database!');
+     DBMS_OUTPUT.PUT_LINE('-    CATID:   ' || new_catid);
+     DBMS_OUTPUT.PUT_LINE('-    Author:  ' || author_pid);
+     DBMS_OUTPUT.PUT_LINE('-    Title:   ' || new_title);
+     DBMS_OUTPUT.PUT_LINE('-    Content: ' || new_title);
+     DBMS_OUTPUT.PUT_LINE('-    Edition: ' || new_vol);
+     DBMS_OUTPUT.PUT_LINE('-    Editor:  ' || editor_pid);
+     DBMS_OUTPUT.PUT_LINE('-    Ref:     ' || ref_catid);
+
+   END;
+   /
+
+   EXEC  addWork(118, 108, 'BKGN1857', 45671, 'ILBA3245', 'Book', 'The Hobbit', 'In a hole in the ground there lived a hobbit', 1);
+   EXEC  addWork(118, 345, 'BKGN1857', 45671, 'ILBA3245', 'Book', 'The Hobbit', 'In a hole in the ground there lived a hobbit', 1);
+   EXEC  addWork(118, 107, 'BKGN1857', 45671, 'ILBA3245', 'Book', 'The Hobbit', 'In a hole in the ground there lived a hobbit', 1);
+
+   SQL> @p6
+
+   Procedure created.
+
+   The Book has been added to the Database!
+   -    CATID:   ILBA3245
+   -    Author:  118
+   -    Title:   The Hobbit
+   -    Content: The Hobbit
+   -    Edition: 1
+   -    Editor:  108
+   -    Ref:     BKGN1857
+
+   PL/SQL procedure successfully completed.
+
+   Invalid Editor: 345 cannot continue!
+
+   PL/SQL procedure successfully completed.
+
+   New Catalog ID already exists: ILBA3245 cannot continue!
+
+   PL/SQL procedure successfully completed.
+
+   SQL>
+
+   SELECT DISTINCT C.catid, B.btitle
+   FROM Author A, Editor E, Catalog_item C,
+        Publishing_Company Pub, Reference R, Book B
+   WHERE A.pid     = 118 AND
+         E.pid     = 108 AND
+         R.cite_id = 'BKGN1857' AND
+         C.catid   = 'ILBA3245' AND
+         B.btitle  = 'The Hobbit';
+
+   CATID      BTITLE
+   ---------- ----------------------------------------
+   ILBA3245   The Hobbit
+
+   Justification:
+   To add entries to the database we have to do some verification. It is important
+   to verify the author, editors, reference, and publishing companies. We must also
+   make sure that the new catalog ID does not exist. To efficiently error check input
+   parameters we select a COUNT of the instances, this results in a boolean value.
+   After we do error checking for this all of the values are then added to the Database.
+
+7) Remove a catalog item from the database whose contract has expired.
+
+   COL contract_term FORMAT A13
+
+   SELECT C.catid, C.contract_term
+   FROM Catalog_item C
+   WHERE C.contract_term < (SELECT SYSDATE
+                            FROM DUAL);
+
+   CREATE OR REPLACE PROCEDURE deletePastTerm
+   AS
+   BEGIN
+   DELETE FROM Catalog_item C
+   WHERE C.contract_term < (SELECT SYSDATE
+                            FROM DUAL);
+   END;
+   /
+
+   EXEC deletePastTerm();
+
+   SELECT C.catid, C.contract_term
+   FROM Catalog_item C
+   WHERE C.contract_term < (SELECT SYSDATE
+                            FROM DUAL);
+
+   Output:
+   SQL> @p7
+
+   CATID      CONTRACT_TERM
+   ----- -------------
+   NJEQ6977   25-JAN-05
+   ABIQ2755   03-JUL-12
+   VMGS7843   22-MAY-11
+   ZNMF0012   02-NOV-16
+
+
+   Procedure created.
+
+
+   PL/SQL procedure successfully completed.
+
+
+   no rows selected
+
+   SQL>
+
+   Justification:
+   This procedure finds the catid of Catalog_item's that have expired. Expiration
+   is defined as contract_terms that are less than the Oracle SYSDATE (current date).
+   The procedure then deletes all items that are less than the current date. The
+   procedure is not very complex because of ON DELETE CASCADE, which was added to
+   tables; Journal, Magazine, Book, Conference_proceedings, Reference, Search,
+   Retrieve, Writes, Edits, and Publishes. A single DELETE FROM Catalog_item will
+   remove these entries, thanks to our table design.
+
+8) Update a user's email address.
+
+   SET SERVEROUTPUT ON
+   COL pid FORMAT 999
+   COL pname FORMAT A20
+   COL uname FORMAT A12
+   COL email FORMAT A40
+
+   SELECT *
+   FROM Person P
+   WHERE P.pid = 120 OR
+         P.pid = 108 OR
+         P.pid = 117 OR
+         P.pid = 125;
+
+   CREATE OR REPLACE PROCEDURE changeEmail(
+     username IN char,
+     newEmail IN char
+   )
+   AS
+   BEGIN
+   UPDATE Person P
+   SET P.email = newEmail
+   WHERE P.pid = (SELECT U.pid
+                  FROM Users U
+                  WHERE U.uname = username);
+   END;
+   /
+
+   EXEC changeEmail('jwheeler', '18wheelerLover@gmail.com');
+   EXEC changeEmail('rharper', 'reeses-pieces@mars.com');
+   EXEC changeEmail('tshelton', 'eaglesTalon@birdwatcher.mn');
+   EXEC changeEmail('bpage', 'turningAnotherPage@yahoo.com');
+
+   SELECT *
+   FROM Person P
+   WHERE P.pid = 120 OR
+         P.pid = 108 OR
+         P.pid = 117 OR
+         P.pid = 125;
+
+   Output:
+   SQL> @p8.sql
+
+    PID PNAME                EMAIL
+   ---- -------------------- ----------------------------------------
+    108 Reese Harper         magna.Nam@metus.co.uk
+    117 Talon Shelton        molestie.sodales@Proinnonmassa.com
+    120 Jacob Wheeler        quam.a.felis@morbitristiquesenectus.ca
+    125 Barbara Page         erat.Etiam@mollis.edu
+
+
+   Procedure created.
+
+
+   PL/SQL procedure successfully completed.
+
+
+   PL/SQL procedure successfully completed.
+
+
+   PL/SQL procedure successfully completed.
+
+
+   PL/SQL procedure successfully completed.
+
+
+    PID PNAME                EMAIL
+   ---- -------------------- ----------------------------------------
+    108 Reese Harper         reeses-pieces@mars.com
+    117 Talon Shelton        eaglesTalon@birdwatcher.mn
+    120 Jacob Wheeler        18wheelerLover@gmail.com
+    125 Barbara Page         turningAnotherPage@yahoo.com
+
+   SQL>
+
+   Justification:
+   This procedure changes a value in the Person table, email. It takes in a username
+   from the Users table. We SELECT the user's pid that joins to a pid in person,
+   which is where emails are located. From this point we know that we have identified
+   a user's email based on their username, after that an UPDATE statement changes the
+   email.
+
+9) Update a user's subscription status (the user extends this period).
+
+   SELECT U.uname, S.begin_date, S.slen
+   FROM Users U, Subscription S, Creates C
+   WHERE U.pid = C.pid AND
+         S.sid = C.sid;
+
+   CREATE OR REPLACE PROCEDURE updateSubsciption(
+     username IN char,
+     months   IN number
+   )
+   AS
+   BEGIN
+   UPDATE Subscription S
+   SET S.begin_date = ADD_MONTHS(S.begin_date, S.slen),
+       S.slen = months
+   WHERE S.sid = (SELECT C.sid
+                  FROM Creates C, Users U
+                  WHERE U.pid = C.pid AND
+                        U.uname = username);
+   END;
+   /
+
+   EXEC updateSubsciption('tshelton', 6);
+   EXEC updateSubsciption('omartinez', 6);
+   EXEC updateSubsciption('gwilkins', 12);
+   EXEC updateSubsciption('vholder', 9);
+   EXEC updateSubsciption('bsantos', 1);
+   EXEC updateSubsciption('tshelton', 6);
+
+   SELECT U.uname, S.begin_date, S.slen
+   FROM Users U, Subscription S, Creates C
+   WHERE U.pid = C.pid AND
+         S.sid = C.sid;
+
+   Output:
+   SQL> @p9
+
+   UNAME        BEGIN_DATE      SLEN
+   ------------ --------------- ----
+   gwilkins     19-NOV-19         12
+   rharper      19-APR-19         23
+   tshelton     23-SEP-23         12
+   dhamnes      10-JUN-10          3
+   jwheeler     24-MAY-24          2
+   vholder      21-JAN-21          8
+   bsantos      05-JAN-05         18
+   bpage        07-SEP-07         12
+   ipeterson    31-AUG-31          8
+   omartinez    27-OCT-27         12
+
+   10 rows selected.
+
+
+   Procedure created.
+
+
+   PL/SQL procedure successfully completed.
+
+
+   PL/SQL procedure successfully completed.
+
+
+   PL/SQL procedure successfully completed.
+
+
+   PL/SQL procedure successfully completed.
+
+
+   PL/SQL procedure successfully completed.
+
+
+   PL/SQL procedure successfully completed.
+
+
+   UNAME        BEGIN_DATE      SLEN
+   ------------ --------------- ----
+   gwilkins     19-NOV-20         12
+   rharper      19-APR-19         23
+   tshelton     23-MAR-25          6
+   dhamnes      10-JUN-10          3
+   jwheeler     24-MAY-24          2
+   vholder      21-SEP-21          9
+   bsantos      05-JUL-06          1
+   bpage        07-SEP-07         12
+   ipeterson    31-AUG-31          8
+   omartinez    27-OCT-28          6
+
+   10 rows selected.
+
+   SQL>
+
+   Justification:
+   To update a user's subscription we need to conform to our standard of using a
+   start time attribute and months of subscription purchased. Using Oracle's
+   ADD_MONTHS function we can make use of our schema for updating times. We use an
+   UPDATE statement and set the 'new' begin date to the old subscription date with
+   the duration added. We then assign the new months purchased to the slen. This
+   procedure is very expendable and robust.
