@@ -28,6 +28,7 @@ INSERT INTO Person (pid,pname,email) VALUES (150,'Yolanda Glover','arcu@ipsum.co
 INSERT INTO Person (pid,pname,email) VALUES (151,'Charity Stevens','vestibulum.lorem@necorciDonec.ca');
 INSERT INTO Person (pid,pname,email) VALUES (152,'Allen Carr','nisi.Mauris@mauriseu.edu');
 INSERT INTO Person (pid,pname,email) VALUES (153,'Alexa Thomas','Proin.nisl@adlitora.net');
+INSERT INTO Person (pid,pname,email) VALUES (200,'Bobby George','hello@sunshine.com');
 
 -- Author
 INSERT INTO Author (pid) VALUES (102);
@@ -173,6 +174,7 @@ INSERT INTO Users (uname,pid) VALUES ('bsantos',124);
 INSERT INTO Users (uname,pid) VALUES ('bpage',125);
 INSERT INTO Users (uname,pid) VALUES ('ipeterson',126);
 INSERT INTO Users (uname,pid) VALUES ('omartinez',141);
+INSERT INTO Users (uname,pid) VALUES ('bgeorge',200);
 
 -- Viewer
 INSERT INTO Viewer (vid) VALUES (200);

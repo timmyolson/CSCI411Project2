@@ -1545,6 +1545,100 @@ Stored Procedures
    within two moduli, is the principle operation in the procedure which allows partial
    matches.
 
+5) Display the catalog item title and catid of items whose contract is going to expire within 30 days.
+
+   create or replace PROCEDURE EXPIRE_DATE 
+   
+   AS
+   
+   f_title VARCHAR(255);
+   idd varchar(255);
+   
+                       
+   cursor findbook is select b.btitle,b.bid from book b ,catalog_item C
+                       where c.catid =b.bid and contract_term < sysdate+30;
+                       
+   cursor findjournal is select j.jtitle ,j.jid from journal j,catalog_item C
+                       where j.jid = c.catid and contract_term < sysdate+30;
+                       
+   cursor findmagazine is select m.mtitle, m.mid  from magazine m,catalog_item C
+                       where c.catid = m.mid and contract_term < sysdate+30;
+                       
+   cursor findcp is select cp.cptitle,cp.cid from Conference_proceedings cp,catalog_item C
+                       where cp.cid = c.catid and contract_term < sysdate+30;
+                   
+   BEGIN
+     DBMS_OUTPUT.PUT_LINE('Search  near expiring catalogue inventory');
+     DBMS_OUTPUT.PUT_LINE('Searching...');
+     OPEN findbook;
+     LOOP
+         FETCH findbook INTO f_title,idd;
+         IF findbook%NOTFOUND THEN
+             EXIT;
+         END IF;
+         DBMS_OUTPUT.PUT_LINE('    book:   ' || f_title);
+          DBMS_OUTPUT.PUT_LINE(' Catalog id:'||idd);
+     END LOOP;
+     CLOSE findbook;
+   
+     OPEN findjournal;
+     LOOP
+         FETCH findjournal INTO f_title,idd;
+         IF findjournal%NOTFOUND THEN
+             EXIT;
+         END IF;
+         DBMS_OUTPUT.PUT_LINE('     Journal:      ' ||f_title);
+          DBMS_OUTPUT.PUT_LINE('    Catalog id:   '||idd);
+     END LOOP;
+     CLOSE findjournal;
+   
+     OPEN findmagazine ;
+     LOOP
+              FETCH findmagazine INTO f_title,idd;
+         IF findmagazine%NOTFOUND THEN
+             EXIT;
+         END IF;
+         DBMS_OUTPUT.PUT_LINE('    magazine:      ' || f_title);
+        DBMS_OUTPUT.PUT_LINE('     Catalog id:    '||idd);
+     END LOOP;
+     CLOSE findmagazine ;
+   
+     OPEN  findcp;
+     LOOP
+         FETCH  findcp INTO f_title,idd;
+         IF  findcp%NOTFOUND THEN
+             EXIT;
+         END IF;
+         DBMS_OUTPUT.PUT_LINE('    Conference proceeding: ' || f_title);
+      DBMS_OUTPUT.PUT_LINE   ('    Catalog id:            '||idd);
+     END LOOP;
+     CLOSE  findcp;
+     DBMS_OUTPUT.PUT_LINE('End of Search!');
+   END;
+   /
+   
+   exec expire_date;
+   
+   Search  near expiring catalogue inventory
+   Searching...
+   book:   Wuthering Heights
+   Catalog id:NJEQ6977
+   book:   The Bell Jar
+   Catalog id:VMGS7843
+   Journal:      Water the Epic Struggle for Wealth, Power, and Civilization
+   Catalog id:   ABIQ2755
+   Journal:      The Role of Time and Time Perspective
+   Catalog id:   ZNMF0012
+   End of Search!
+   
+   PL/SQL procedure successfully completed.
+
+   Justification: This procedure checks for the item in catalog and which is 
+   going to expire in 30 days and also show the items that are already expired.
+   And displays the title, catalog id and says whether it's a book or journal
+   or magazine or conference preceeding.
+
+
 6) Allow an author to submit work.
 
    SET SERVEROUTPUT ON
@@ -1915,3 +2009,121 @@ Stored Procedures
    UPDATE statement and set the 'new' begin date to the old subscription date with
    the duration added. We then assign the new months purchased to the slen. This
    procedure is very expendable and robust.
+
+
+10) Delete a person by id if they are not author.
+
+   create or replace TRIGGER UserDelete
+       AFTER DELETE
+       ON Users
+       FOR EACH ROW
+   DECLARE
+       refs number;
+   BEGIN
+       -- Check if  author is found.
+       SELECT count(*) INTO refs
+           FROM Person P, Author A
+           WHERE P.pid = A.pid
+           AND P.pid = :OLD.pid;
+   
+   
+       IF refs = 0 THEN
+           DELETE FROM Person P
+               WHERE P.pid = :OLD.pid;
+       END IF;
+   END;
+   
+   SQL> select pname from person;
+   
+   PNAME
+   ------------------------------
+   Graiden Wilkins
+   Brandon Horton
+   Drew Lott
+   Michelle Farley
+   Reese Harper
+   Talon Shelton
+   Donald O. Hamnes
+   Stephanie Gordon
+   Jacob Wheeler
+   Victoria Holder
+   Aspen Ayala
+   
+   PNAME
+   ------------------------------
+   Melissa Hernandez
+   Bertha Santos
+   Barbara Page
+   Iliana Peterson
+   Conan Johns
+   Candice Clemons
+   Patricia Curtis
+   Neil Knowles
+   Olga Martinez
+   Upton Booker
+   Alyssa Gilmore
+   
+   PNAME
+   ------------------------------
+   Logan Oneil
+   Bryant A. Julstrom
+   Yolanda Glover
+   Charity Stevens
+   Allen Carr
+   Alexa Thomas
+   Bobby George
+   
+   29 rows selected.
+   
+   SQL> @p10
+   
+   Trigger created.
+   
+   SQL> delete from users where pid=200;
+   
+   1 row deleted.
+   
+   SQL> select pname from person;
+   
+   PNAME
+   ------------------------------
+   Graiden Wilkins
+   Brandon Horton
+   Drew Lott
+   Michelle Farley
+   Reese Harper
+   Talon Shelton
+   Donald O. Hamnes
+   Stephanie Gordon
+   Jacob Wheeler
+   Victoria Holder
+   Aspen Ayala
+   
+   PNAME
+   ------------------------------
+   Melissa Hernandez
+   Bertha Santos
+   Barbara Page
+   Iliana Peterson
+   Conan Johns
+   Candice Clemons
+   Patricia Curtis
+   Neil Knowles
+   Olga Martinez
+   Upton Booker
+   Alyssa Gilmore
+   
+   PNAME
+   ------------------------------
+   Logan Oneil
+   Bryant A. Julstrom
+   Yolanda Glover
+   Charity Stevens
+   Allen Carr
+   Alexa Thomas
+   
+   28 rows selected.
+
+   Justification: This triggers checks for the person who is user only not the author by PID.
+   Once the condition is  satisfied then the user is deleted form database otherwise the 
+   user cannot be deleted.
