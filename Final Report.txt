@@ -933,7 +933,7 @@ Basic Interactions
    are selected, producing ones that where published in the same year.
 
 
-7) Report the catalog item which has been refernced the most.
+6) Report the catalog item which has been refernced the most.
 
    SELECT * FROM (
       SELECT R.catid, COUNT(R.catid) as num
@@ -952,7 +952,7 @@ Basic Interactions
    Then all we have to do is order by the count of catid and report the
    top row.
 
-9) Give the name and phone number of the publishing company who has published the most
+7) Give the name and phone number of the publishing company who has published the most
    conference proceedings.
 
    SELECT * FROM (
@@ -976,7 +976,7 @@ Basic Interactions
    it has published. The top publisher is then reported.
 
 
-10) List catalog items that were published in the same state that a user is from and
+8) List catalog items that were published in the same state that a user is from and
     has retrieved.
 
    SELECT R.catid, A.street, A.city, A.state
@@ -999,10 +999,7 @@ Basic Interactions
    and state) the row is a match and is reported.
 
 
-Additional Queries
---------------------------
-
-1) Give the number of items written, edited, total and the names of the three persons who
+9) Give the number of items written, edited, total and the names of the three persons who
    have contributed the highest number of catalog items.
 
    SELECT * FROM (
@@ -1033,7 +1030,7 @@ Additional Queries
    are added producing that person's total "contributions".
 
 
-2) Give the title of the catalog item as well as the author, of the item that has been retrieved the most.
+10) Give the title of the catalog item as well as the author, of the item that has been retrieved the most.
 
    COL title format a50
 
@@ -1179,6 +1176,238 @@ Stored Procedures
    ADD_MONTHS function which determines the subscription end date by adding the subscription
    duration to the subscription start date. We fetch all tuples where the the end date is
    less than the current system date (Oracle SYSDATE).
+
+
+2) View or Retieve for a catalog item. Then update the search|retrieve table.
+
+   SET SERVEROUTPUT ON
+   
+   CREATE OR REPLACE PROCEDURE Retrieve_item (user_id IN char, search_title IN char) AS
+   
+   item_title varchar2(100);
+   item_found varchar2(10);
+   content varchar2(200);
+   user_found int;
+   view_num int;
+   u_id int;
+   CURSOR m_id IS SELECT M.mtitle, M.mid, M.content
+                  FROM Magazine M
+                  WHERE M.mtitle = search_title;
+   
+   CURSOR j_id IS SELECT J.jtitle, J.jid, J.content
+                  FROM Journal J
+                  WHERE J.jtitle = search_title;
+   
+   CURSOR b_id IS SELECT B.btitle, B.bid, B.content
+                  FROM Book B
+                  WHERE B.btitle = search_title;
+   
+   CURSOR c_id IS SELECT CP.cptitle, CP.cid, CP.content
+                  FROM Conference_proceedings CP
+                  WHERE CP.cptitle = search_title;
+   
+   BEGIN
+     DBMS_OUTPUT.PUT_LINE('Search for title: [' || search_title || '] from Catalog Items.');
+     DBMS_OUTPUT.PUT_LINE('Searching...');
+     OPEN m_id;
+     LOOP
+         FETCH m_id INTO item_title, item_found, content;
+         IF m_id%NOTFOUND THEN
+             EXIT;
+         END IF;
+     END LOOP;
+     CLOSE m_id;
+   
+     OPEN j_id;
+     LOOP
+         FETCH j_id INTO item_title, item_found, content;
+         IF j_id%NOTFOUND THEN
+             EXIT;
+         END IF;
+     END LOOP;
+     CLOSE j_id;
+   
+     OPEN b_id;
+     LOOP
+         FETCH b_id INTO item_title, item_found, content;
+         IF b_id%NOTFOUND THEN
+             EXIT;
+         END IF;
+     END LOOP;
+     CLOSE b_id;
+   
+     OPEN c_id;
+     LOOP
+         FETCH c_id INTO item_title, item_found, content;
+         IF c_id%NOTFOUND THEN
+             EXIT;
+         END IF;
+     END LOOP;
+     CLOSE c_id;
+   
+     SELECT COUNT(U.uname) INTO user_found FROM Users U WHERE U.uname = user_id;
+   
+   
+     IF user_found = 0 THEN
+         DBMS_OUTPUT.PUT_LINE(user_id || ' is not a validated User');
+         DBMS_OUTPUT.PUT_LINE('Found ' || item_found || '!');
+         DBMS_OUTPUT.PUT_LINE('No content will be displayed');
+   
+         SELECT vid INTO view_num FROM (SELECT vid FROM Viewer ORDER BY vid DESC) WHERE ROWNUM = 1;
+         INSERT INTO Viewer (vid) VALUES (view_num+5);
+         INSERT INTO Search (vid,catid) VALUES (view_num+5,item_found);
+         COMMIT;
+     ELSE
+         SELECT U.pid INTO u_id FROM Users U WHERE U.uname = user_id;
+   
+         DBMS_OUTPUT.PUT_LINE('User ' || user_id || ' validated');
+         DBMS_OUTPUT.PUT_LINE('Found ' || item_found || '!');
+         DBMS_OUTPUT.PUT_LINE('Displaying content:');
+         DBMS_OUTPUT.PUT_LINE(content);
+   
+         INSERT INTO Retrieve (pid,catid,r_date) VALUES (u_id,item_found,to_char(sysdate, 'dd-mon-yyyy'));
+         COMMIT;
+     END IF;
+   
+     DBMS_OUTPUT.PUT_LINE('End of Search!');
+   END;
+   /
+   
+   exec Retrieve_item('dhamnes','The Old Man and the Sea');
+   exec Retrieve_item('tolson','The Old Lady Who Swallowed a Fly');
+
+   Search for title: [The Old Man and the Sea] from Catalog Items.
+   Searching...
+   User dhamnes validated
+   Found SQXZ1306!
+   Displaying content:
+   The content of book: The Old Man...
+   End of Search!
+
+   PL/SQL procedure successfully completed.
+
+   Search for title: [The Old Lady Who Swallowed a Fly] from Catalog Items.
+   Searching...
+   tolson is not a validated User
+   Found IBNV2946!
+   No content will be displayed
+   End of Search!
+
+   PL/SQL procedure successfully completed.
+
+   Justification: First we use a curson to get the titles and catid's of books. Then we check to validate 
+   the person accessing the database is a validated user. If they are, the title of the book will be 
+   displayed but the content will not. Otherwise, it will display the content. It will additionally
+   insert into the searches and retrieves tables repsectively.
+
+3) Display an article written by an author.
+
+   create or replace PROCEDURE  Author_writes(author_name in char)as
+   
+   title varchar2(255);
+   cat_id varchar2(255);
+   
+   cursor bfind is select b.btitle, b.bid
+                   FROM Person P, Writes W, book b
+                   WHERE P.pname = author_name
+                   AND P.pid = W.pid                
+                   AND W.catid = b.bid;
+    
+   cursor jfind is select j.jtitle, j.jid 
+                   From Person P, Writes W, Journal j
+                   WHERE P.pname = author_name
+                   AND P.pid = W.pid          
+                   AND W.catid = j.jid;  
+                      
+    
+   cursor mfind is select m.mtitle, m.mid 
+                   From Person P, Writes W, magazine m
+                   WHERE P.pname = author_name
+                   AND P.pid = W.pid          
+                   AND W.catid = m.mid;  
+   
+   cursor cpfind is select cp.cptitle, cp.cid 
+                    From Person P, Writes W, Conference_proceedings cp
+                    WHERE P.pname = author_name
+                    AND P.pid = W.pid
+                    AND W.catid = cp.cid;  
+                      
+   BEGIN
+     DBMS_OUTPUT.PUT_LINE('Search for author: [' || author_name || ']  in Database ');
+     DBMS_OUTPUT.PUT_LINE('Searching...');
+    
+     OPEN bfind;
+     LOOP
+         FETCH bfind INTO title, cat_id;
+         IF bfind%NOTFOUND THEN
+             EXIT;
+         END IF;
+         dbms_output.put_line(' book Title:   '||title||' book ID:   '||cat_id  );
+     END LOOP;
+     CLOSE bfind;
+     
+     OPEN jfind;
+     LOOP
+         FETCH jfind INTO title, cat_id;
+         IF  jfind%NOTFOUND THEN
+             EXIT;
+         END IF;
+          dbms_output.put_line(' journal Title:   '||title||' journal ID:   '||cat_id  );
+     END LOOP;
+     CLOSE jfind;
+   
+     OPEN mfind;
+     LOOP
+         FETCH mfind INTO title, cat_id;
+         IF  mfind%NOTFOUND THEN
+             EXIT;
+         END IF;
+              dbms_output.put_line(' magazine Title:   '||title||' journal ID:   '||cat_id  );
+     END LOOP;
+     CLOSE mfind;
+     
+       OPEN cpfind;
+     LOOP
+         FETCH cpfind INTO title, cat_id;
+         IF  cpfind%NOTFOUND THEN
+             EXIT;
+         END IF;
+          dbms_output.put_line(' conference proceeding Title:   '||title||' conference proceeding ID:  '||cat_id  );
+     END LOOP;
+     CLOSE cpfind;
+   
+     DBMS_OUTPUT.PUT_LINE('End of Search!');
+   END;
+   /
+   
+   exec Author_writes('Alexa Thomas');
+   exec Author_writes('Aspen Ayala');
+
+   Search for author: [Alexa Thomas]  in Database
+   Searching...
+   book Title:   The Old Lady Who Swallowed a Fly book ID:   IBNV2946
+   book Title:   Wuthering Heights book ID:   NJEQ6977
+   book Title:   The Trial book ID:   HZLE2432
+   magazine Title:   How is Bitcoin money journal ID:   HPNL1208
+   magazine Title:   Can you change how you feel about money? journal ID:
+   YQHH6457
+   End of Search!
+
+   PL/SQL procedure successfully completed.
+
+   Search for author: [Aspen Ayala]  in Database
+   Searching...
+   journal Title:   Potential of Native Organic Feeding Stuffs in Poultry
+   Production journal ID:   YZAQ6317
+   journal Title:   Remarque en toy telle marque journal ID:   ERRZ8161
+   End of Search!
+
+   PL/SQL procedure successfully completed.
+
+   Justification: In order to display the catalog items that an author has written we 
+   first use a cursor to check for all of the items that were written by the author name.
+   Then as going through the cursor, every match is printed out.
+
 
 4) Search through catalog items given a search term.
 
