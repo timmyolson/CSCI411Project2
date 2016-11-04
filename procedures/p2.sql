@@ -2,7 +2,7 @@
 
 SET SERVEROUTPUT ON
 
-CREATE OR REPLACE PROCEDURE r (user_id IN char, search_title IN char) AS
+CREATE OR REPLACE PROCEDURE Retrieve_item (user_id IN char, search_title IN char) AS
 
 item_title varchar2(100);
 item_found varchar2(10);
@@ -66,7 +66,6 @@ BEGIN
   CLOSE c_id;
 
   SELECT COUNT(U.uname) INTO user_found FROM Users U WHERE U.uname = user_id;
-  SELECT U.pid INTO u_id FROM Users U WHERE U.uname = user_id;
 
 
   IF user_found = 0 THEN
@@ -79,6 +78,7 @@ BEGIN
       INSERT INTO Search (vid,catid) VALUES (view_num+5,item_found);
       COMMIT;
   ELSE
+      SELECT U.pid INTO u_id FROM Users U WHERE U.uname = user_id;
 
       DBMS_OUTPUT.PUT_LINE('User ' || user_id || ' validated');
       DBMS_OUTPUT.PUT_LINE('Found ' || item_found || '!');
@@ -92,3 +92,25 @@ BEGIN
   DBMS_OUTPUT.PUT_LINE('End of Search!');
 END;
 /
+
+exec Retrieve_item('dhamnes','The Old Man and the Sea');
+exec Retrieve_item('tolson','The Old Lady Who Swallowed a Fly');
+
+-- Search for title: [The Old Man and the Sea] from Catalog Items.
+-- Searching...
+-- User dhamnes validated
+-- Found SQXZ1306!
+-- Displaying content:
+-- The content of book: The Old Man...
+-- End of Search!
+
+-- PL/SQL procedure successfully completed.
+
+-- Search for title: [The Old Lady Who Swallowed a Fly] from Catalog Items.
+-- Searching...
+-- tolson is not a validated User
+-- Found IBNV2946!
+-- No content will be displayed
+-- End of Search!
+
+-- PL/SQL procedure successfully completed.

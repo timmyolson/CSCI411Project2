@@ -77,3 +77,27 @@ BEGIN
   DBMS_OUTPUT.PUT_LINE('End of Search!');
 END;
 /
+
+exec Author_writes('Alexa Thomas');
+exec Author_writes('Aspen Ayala');
+
+-- Search for author: [Alexa Thomas]  in Database
+-- Searching...
+-- book Title:   The Old Lady Who Swallowed a Fly book ID:   IBNV2946
+-- book Title:   Wuthering Heights book ID:   NJEQ6977
+-- book Title:   The Trial book ID:   HZLE2432
+-- magazine Title:   How is Bitcoin money journal ID:   HPNL1208
+-- magazine Title:   Can you change how you feel about money? journal ID:
+-- YQHH6457
+-- End of Search!
+
+-- PL/SQL procedure successfully completed.
+
+-- Search for author: [Aspen Ayala]  in Database
+-- Searching...
+-- journal Title:   Potential of Native Organic Feeding Stuffs in Poultry
+-- Production journal ID:   YZAQ6317
+-- journal Title:   Remarque en toy telle marque journal ID:   ERRZ8161
+-- End of Search!
+
+-- PL/SQL procedure successfully completed.
